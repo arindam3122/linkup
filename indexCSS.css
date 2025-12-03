@@ -1,0 +1,133 @@
+body {
+      background-image: url('back.jpg');
+      font-family: 'Inter', sans-serif; /* Using Inter for a modern look */
+      padding: 20px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh; /* Use min-height for better responsiveness */
+      margin: 0; /* Remove default body margin */
+    }
+    .login-container {
+      background: rgb(255, 255, 255);
+      padding: 40px; /* Increased padding */
+      border-radius: 12px; /* More rounded corners */
+      box-shadow: 0 4px 20px rgba(0,0,0,0.1); /* Stronger shadow */
+      width: 100%;
+      max-width: 380px; /* Max width for larger screens */
+      box-sizing: border-box; /* Include padding and border in element's total width and height */
+      text-align: center;
+    }
+    .logo {
+      margin-bottom: 30px;
+    }
+    .logo img {
+      width: 180px; /* Further increased logo size */
+      height: 180px; /* Further increased logo size */
+      object-fit: contain;
+      border-radius: 30px;
+      border: 2px solid rgb(0, 0, 0);
+    }
+    h2 {
+      color: #333;
+      margin-bottom: 30px; /* Space below heading */
+      font-size: 2em; /* Larger heading */
+      font-weight: 600;
+    }
+    .input-field-wrapper {
+        position: relative; /* Crucial for positioning the eye icon inside */
+        margin-bottom: 25px; /* Space between input fields */
+    }
+    .input-field-wrapper input {
+      width: 100%; /* Make input fill the wrapper */
+      padding: 15px 15px 15px 45px; /* Adjust right padding as eye icon is removed */
+      border: 1px solid #490b0b; /* Lighter border */
+      border-radius: 20px; /* Rounded input fields */
+      font-size: 1.3em;
+      transition: border-color 0.3s ease;
+      box-sizing: border-box; /* Include padding and border in element's total width and height */
+    }
+    .input-field-wrapper input:focus {
+      border-color: #007bff; /* Highlight on focus */
+      outline: none;
+      box-shadow: 0 0 0 3px rgba(0, 123, 255, 0.25);
+    }
+    /* Icons for input fields */
+    .username-icon {
+        background: url('https://api.iconify.design/heroicons-solid/user.svg?color=%23888') no-repeat 15px center;
+        background-size: 20px;
+    }
+    .password-icon {
+        background: url('https://api.iconify.design/heroicons-solid/lock-closed.svg?color=%23888') no-repeat 15px center;
+        background-size: 20px;
+    }
+    button {
+      background: linear-gradient(45deg, #007bff, #00c6ff); /* Gradient button */
+      color: white;
+      border: none;
+      padding: 15px 30px; /* Larger button */
+      border-radius: 25px; /* More rounded button */
+      cursor: pointer;
+      font-size: 1.2em;
+      font-weight: bold;
+      width: 100%;
+      margin-top: 20px; /* Space above button */
+      transition: all 0.3s ease;
+      box-shadow: 0 4px 15px rgba(0, 123, 255, 0.3); /* Button shadow */
+      letter-spacing: 0.5px;
+      text-transform: uppercase;
+    }
+    button:hover {
+      background: linear-gradient(45deg, #0056b3, #009be0); /* Darker gradient on hover */
+      box-shadow: 0 6px 20px rgba(0, 123, 255, 0.4);
+      transform: translateY(-2px); /* Lift effect on hover */
+    }
+    /* Styles for the error message at the bottom-left */
+    #error {
+      position: fixed; /* Fixed position relative to the viewport */
+      bottom: 20px; /* 20px from the bottom */
+      left: 20px; /* 20px from the left */
+      background-color: #dc3545; /* A standard red color for error */
+      color: white;
+      padding: 14px 25px; /* Larger padding */
+      border-radius: 10px; /* More rounded */
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.25); /* Stronger shadow */
+      opacity: 0; /* Initially invisible */
+      visibility: hidden; /* Hidden from screen readers initially */
+      transition: opacity 0.5s ease-in-out, visibility 0.5s ease-in-out; /* Smooth fade transition */
+      z-index: 1000; /* Ensure it's above other content */
+      font-weight: bold;
+      letter-spacing: 0.5px;
+      font-size: 1.1em;
+      text-align: left; /* Align text left within its own box */
+      max-width: 350px; /* Limit width for better readability */
+    }
+    /* Class to show the error message */
+    #error.show {
+      opacity: 1;
+      visibility: visible;
+    }
+    /* Styles for the success message (similar to error but green) */
+    #success {
+      position: fixed;
+      bottom: 20px;
+      left: 20px;
+      background-color: #28a745; /* A standard green color for success */
+      color: white;
+      padding: 14px 25px;
+      border-radius: 10px;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.25);
+      opacity: 0;
+      visibility: hidden;
+      transition: opacity 0.5s ease-in-out, visibility 0.5s ease-in-out;
+      z-index: 1000;
+      font-weight: bold;
+      letter-spacing: 0.5px;
+      font-size: 1.1em;
+      text-align: left;
+      max-width: 350px;
+    }
+    #success.show {
+      opacity: 1;
+      visibility: visible;
+    }

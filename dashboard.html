@@ -1,0 +1,329 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link rel="icon" type="image/x-icon" href="linkup.png">
+  <title>Dashboard</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <link rel="stylesheet" href="dashboardCSS.css">
+ </head>
+  <body>
+<nav id="sidebar">
+  <div class="logo-container">
+    <img src="linkup.png" alt="LinkUp Logo" class="logo">
+  </div>
+  <ul>
+    <li><a href="#" id="dashboardLink" class="active"><i class="fas fa-home"></i> Dashboard</a></li>
+    <li><a href="#" id="startQuizLink"><i class="fas fa-arrow-right"></i> Start Quiz</a></li>
+    <li><a href="#" id="createQuizLink"><i class="fas fa-plus-circle"></i> Create Quiz</a></li>
+    <li><a href="#" id="usersLink"><i class="fas fa-users"></i> Users</a></li>
+    <li><a href="#" id="previousQuizzesLink"><i class="fas fa-history"></i> Previous Quizzes</a></li>
+    <li><a href="#" id="archivedQuizzesLink"><i class="fas fa-archive"></i>Archived Quizzes</a></li>
+    <li><a href="#" id="performanceTrendsLink"><i class="fas fa-chart-line"></i> Performance Trends</a></li>
+    <li><a href="#" id="logoutLink"><i class="fas fa-sign-out-alt"></i> Logout</a></li>
+  </ul>
+</nav>
+
+<div id="sidebarOverlay" class="sidebar-overlay"></div>
+
+<div class="main-content">
+  <header>
+    <div class="hamburger-menu" id="hamburgerMenu">
+      <i class="fas fa-bars"></i>
+    </div>
+    <div class="header-right">
+        <span id="usernameDisplay"></span>
+        <button class="logout-btn" id="headerLogoutButton"><i class="fas fa-sign-out-alt"></i> Logout</button>
+    </div>
+  </header>
+    <div id="quizCompletedMessage" class="info-message quiz-completed-message">Quiz Completed!</div>
+
+<div id="usersContainer" style="display:none;">
+  <h2 class="heading2">Manage Users</h2>
+<table class="users-table">
+  <thead>
+    <tr>
+      <th>Username</th>
+      <th>Password</th>
+      <th>Status</th>
+      <th>Role</th>
+    </tr>
+  </thead>
+  <tbody id="usersTableBody"></tbody>
+</table>
+
+</div>
+
+  <div class="quiz-info-box" id="quizInfoBox">
+    <h2 class="heading1" id="quizInfoHeading">Dashboard Overview</h2>
+    <p id="welcomeHeading" class="welcome-heading" style="font-size: 30px; margin-top: 10px; color: rgb(17, 123, 6); font-weight: 700;"></p>
+    <!-- Admin greeting + quick stats (only visible to admins) -->
+<div id="adminGreeting" class="admin-greeting" style="display:none; margin-top:15px; padding:15px; background:#f3f6ff; border-left:4px solid #3b82f6; border-radius:8px;">
+  <h3 style="margin:0; font-size:20px; color:#1e40af;">
+    👋 Hello Admin!
+  </h3>
+  <p style="margin:6px 0 12px; font-size:14px; color:#374151;">
+    Here’s a quick overview of your quiz platform:
+  </p>
+
+  <div class="admin-stats" style="display:grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap:10px;">
+    <div class="stat-card" style="background:#fff; border:1px solid #ddd; padding:12px; border-radius:6px; text-align:center;">
+      <h4 style="margin:0; font-size:16px; color:#111;">Total Quizzes</h4>
+      <p id="adminTotalQuizzes" style="font-size:18px; font-weight:bold; color:#2563eb;">0</p>
+    </div>
+    <div class="stat-card" style="background:#fff; border:1px solid #ddd; padding:12px; border-radius:6px; text-align:center;">
+      <h4 style="margin:0; font-size:16px; color:#111;">Active</h4>
+      <p id="adminActiveQuizzes" style="font-size:18px; font-weight:bold; color:#16a34a;">0</p>
+    </div>
+    <div class="stat-card" style="background:#fff; border:1px solid #ddd; padding:12px; border-radius:6px; text-align:center;">
+      <h4 style="margin:0; font-size:16px; color:#111;">Inactive</h4>
+      <p id="adminInactiveQuizzes" style="font-size:18px; font-weight:bold; color:#dc2626;">0</p>
+    </div>
+    <div class="stat-card" style="background:#fff; border:1px solid #ddd; padding:12px; border-radius:6px; text-align:center;">
+      <h4 style="margin:0; font-size:16px; color:#111;">Archived</h4>
+      <p id="adminArchivedQuizzes" style="font-size:18px; font-weight:bold; color:#7c3aed;">0</p>
+    </div>
+  </div>
+</div>
+
+      <p id="lastQuizScoreDisplay" style="display:none;"></p>
+      <p id="totalQuizzesCompleted" style="display:none;"></p>
+      <button id="viewRecentQuizDetailsButton" class="action-button view-results-btn" style="display:none;">
+          <i class="fas fa-list-alt"></i> View Recent Quiz Details
+      </button>
+  </div>
+
+  <div class="quiz-selection-container" id="quizSelectionContainer">
+    <h2 class="heading2">Select a Module</h2>
+    <div id="quizList" class="quiz-list-grid">
+      </div>
+  </div>
+
+<div class="quiz-container" id="quizContainer">
+  <h2 class="heading3" id="quizTitle">Quiz Title</h2>
+  <div class="progress-bar-container">
+    <div class="progress-bar" id="progressBar"></div>
+  </div>
+  <div class="timer-display" id="timerDisplay">Time Left: 0:00</div>
+  <div class="question-area">
+    <img id="questionImage" src="" alt="Question Image" style="display:none;">
+    <p id="questionText"></p>
+  </div>
+
+  <div id="optionsContainer" class="options-grid"></div>
+
+  <!-- ✅ Instant feedback for MCQs -->
+  <div id="instantFeedback" class="instant-feedback" 
+       style="display:none; margin-top:15px; padding:12px; border-radius:8px; font-weight:bold; text-align:center;">
+  </div>
+
+  <!-- ✅ Navigation row with Move On between Skip and Next -->
+  <div class="quiz-navigation">
+    <button id="skipButton" class="nav-button skip-button">
+      <i class="fas fa-forward"></i> Skip
+    </button>
+
+    <button id="moveOnButton" class="nav-button" 
+            style="display:none; background:#007bff; color:#fff; border:none; padding:8px 16px; border-radius:6px; cursor:pointer;">
+      Move On <i class="fas fa-arrow-right"></i>
+    </button>
+
+    <button id="nextButton" class="nav-button next-button">
+      Next <i class="fas fa-arrow-right"></i>
+    </button>
+
+    <button id="submitButton" class="nav-button submit-button">
+      Submit <i class="fas fa-check-circle"></i>
+    </button>
+  </div>
+</div>
+
+
+
+    <div class="final-score-container" id="finalScoreContainer">
+        <h2 class="heading4">Quiz Completed!</h2>
+        <div class="score-summary">
+            <p>Your Score: <span id="scoreDisplay">0/0</span></p>
+            <p>Correct Answers: <span id="correctAnswersCount">0</span></p>
+            <p>Wrong Answers: <span id="wrongAnswersCount">0</span></p>
+            <p>Skipped Questions: <span id="skippedQuestionsCount">0</span></p>
+            <p>Percentage Score: <span id="percentageScore">0.00%</span></p>
+        </div>
+        <div class="final-score-actions">
+            <button id="viewResultsButton" class="action-button view-results-btn"><i class="fas fa-list-alt"></i> View Detailed Results</button>
+            <button id="returnToDashboardButton" class="action-button dashboard-btn"><i class="fas fa-tachometer-alt"></i> Return to Dashboard</button>
+        </div>
+    </div>
+
+    <div class="quiz-results-details-container" id="quizResultsDetails">
+        <h2 class="heading5">Detailed Quiz Results</h2>
+            <!-- 🔍 Search bar for filtering questions -->
+<!-- 🌟 Modern Search Bar -->
+<div id="questionSearchContainer" style="display:none; margin-bottom:20px;">
+  <div class="search-bar-wrapper">
+    <i class="fas fa-search search-icon"></i>
+    <input 
+      type="text" 
+      id="questionSearchInput" 
+      placeholder="Search for a question..."
+      class="question-search-input"
+    >
+  </div>
+  <!-- 🚫 No match message -->
+<p id="noMatchMessage" 
+   style="display:none; text-align:center; color:#888; font-style:italic; margin-top:10px;">
+   No matching questions found.
+</p>
+
+</div>
+
+
+        <div class="results-summary-box">
+            <p>Correct: <span id="summaryCorrect">0</span></p>
+            <p>Wrong: <span id="summaryWrong">0</span></p>
+            <p>Skipped: <span id="summarySkipped">0</span></p>
+            <p>Time Up: <span id="summaryTimeUp">0</span></p> <p>Total Questions: <span id="summaryTotalQuestions">0</span></p>
+        </div>
+        <div id="quizResultsDetailsContainer" class="results-grid">
+            </div>
+        <button class="back-to-score-btn" id="quizResultsBackButton"><i class="fa-solid fa-arrow-left"></i> Back</button>
+    </div>
+
+    <div class="previous-quizzes-container" id="previousQuizzesContainer">
+        <h2>My Previous Quizzes</h2>
+        <p id="noPreviousQuizzesMessage" style="display:none; text-align: center; font-style: italic; color: #777;">No previous quiz data found.</p>
+        <div id="deleteConfirmBox" class="confirm-box" style="display:none;">
+  <p id="deleteConfirmText">Are you sure you want to delete this response?</p>
+  <button id="confirmYesBtn" class="confirm-btn yes-btn">Yes</button>
+  <button id="confirmNoBtn" class="confirm-btn no-btn">No</button>
+</div>
+
+        <table id="previousQuizzesTable">
+            <thead>
+                <tr>
+                    <th>Quiz Name</th>
+                    <th>Score</th>
+                    <th>Percentage</th>
+                    <th>Start Time</th> <th>End Time</th>   <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody id="previousQuizzesTableBody">
+            </tbody>
+        </table>
+        <div id="deleteSuccessMessage" class="info-message" style="display:none; background:#d4edda; color:#155724; margin:10px auto; text-align:center; max-width:500px; border-radius:8px; padding:10px; font-weight:bold;">
+    ✅ Response deleted successfully!
+</div>
+
+    </div>
+    <div class="performance-trends-container" id="performanceTrendsContainer">
+  <h2>Performance Trends</h2>
+  <p id="noPerformanceDataMessage" style="display:none; text-align:center; font-style:italic; color:#777;">
+    No performance data available.
+  </p>
+  <canvas id="scoreTrendChart"></canvas>
+  <canvas id="scoreBarChart" style="margin-top:30px;"></canvas>
+</div>
+<div id="archivedQuizzesContainer" style="display:none;">
+  <div class="archive-header">
+    <i class="fas fa-archive"></i>
+    <h2>Archived Quizzes</h2>
+  </div>
+
+  <div class="archive-card">
+    <table class="archive-table">
+      <thead>
+        <tr>
+          <th>Quiz Name</th>
+          <th>Total Questions</th>
+          <th>Actions</th>
+        </tr>
+      </thead>
+      <tbody id="archivedQuizzesTableBody"></tbody>
+    </table>
+    <p id="noArchivedQuizzesMessage" class="no-data-message" style="display:none;">
+      No archived quizzes available.
+    </p>
+  </div>
+</div>
+<div class="all-quizzes-container" id="allQuizzesContainer" style="display:none;">
+  <h2 class="heading2">All Quizzes</h2>
+  <div class="quiz-filter-bar">
+  <label for="quizStatusFilter">Filter:</label>
+  <select id="quizStatusFilter">
+    <option value="all">All</option>
+    <option value="active">Active</option>
+    <option value="inactive">Inactive</option>
+  </select>
+</div>
+
+<div id="allQuizzesList" class="quiz-list-grid"></div>
+
+  <div id="allQuizzesList" class="quiz-list-grid"></div>
+</div>
+
+<div id="createQuizContainer" style="display:none;">
+  <div class="create-quiz-card">
+    <h2 class="heading2"><i class="fas fa-plus-circle"></i> Create New Quiz</h2>
+
+    <form id="createQuizForm" class="quiz-form">
+      <div class="form-group">
+        <label for="quizId">Quiz ID</label>
+        <input type="text" id="quizId" placeholder="Unique ID">
+      </div>
+
+      <div class="form-group">
+        <label for="quizName">Quiz Name</label>
+        <input type="text" id="quizName" placeholder="Enter quiz name">
+      </div>
+
+      <div class="form-group">
+        <label for="quizDescription">Description</label>
+        <textarea id="quizDescription" placeholder="Write a short description"></textarea>
+      </div>
+
+      <div class="form-group checkbox-group">
+        <label for="quizEnabled">
+          <input type="checkbox" id="quizEnabled" checked>
+          Enabled
+        </label>
+      </div>
+
+      <h3 class="heading3">Questions</h3>
+      <div id="questionsContainer" class="questions-container"></div>
+      <button type="button" id="addQuestionBtn" class="action-button add-btn">
+        <i class="fas fa-plus"></i> Add Question
+      </button>
+
+      <div class="form-actions">
+        <button type="button" id="downloadQuizBtn" class="action-button save-btn">
+          <i class="fas fa-download"></i> Download Quiz JSON
+        </button>
+      </div>
+    </form>
+  </div>
+</div>
+
+</div>
+
+
+  </div>
+
+    <div id="infoModal" class="info-modal-overlay">
+        <div class="info-modal-content">
+            <p id="infoMessage"></p>
+            <button id="infoOkButton" class="info-ok-btn">OK</button>
+        </div>
+    </div>
+
+    <div id="timeUpMessage" class="time-up-message"></div>
+
+  <script src="quizData.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+  <script src="indexJS.js"></script>
+  <script src="dashboardJS.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js" integrity="sha512-BNaRQnYJFonKIRehOXlIfgJRVCzOVw4GciFVgo8xnwP1RF8zSlbPWGnGzPOJbS9bGS7UYJnY0tHOESNkSpi9zQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+</body>
+
+</html>
