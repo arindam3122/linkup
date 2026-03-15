@@ -1,8 +1,8 @@
 const users = [
     { id: "Arindam", name: "Super Admin", password: "arindam", enabled: true },
     { id: "roni", name: "Roni Mitra", password: "Roni", enabled: true },
-    { id: "pre", name: "Pre", password: "Pre", enabled: true },
-    { id: "roni", name: "Prerana Ghosh", password: "Pre2025", enabled: true },
+    { id: "pre", name: "Pre", password: "Pre", enabled: false },
+    { id: "roni", name: "Prerana Ghosh", password: "Pre2025", enabled: false },
 ];
 
 function validateLogin() {
