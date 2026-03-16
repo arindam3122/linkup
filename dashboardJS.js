@@ -1442,9 +1442,9 @@ if (currentQuestion.explanation && currentQuestion.explanation.trim() !== "") {
             📘 Explanation
         </div>
 
-        <div class="explanation-text">
-            ${currentQuestion.explanation}
-        </div>
+       <div class="explanation-text">
+       ${formatMathText(currentQuestion.explanation)}
+       </div>
 
     </div>
     `;
