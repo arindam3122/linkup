@@ -2600,7 +2600,7 @@ async function downloadQuizResponse(quiz) {
 function loadQuestion() {
     questionStartTime = Date.now(); // ✅ reset timer for this question
     const currentQuestion = currentQuiz.questions[currentQuestionIndex];
-    questionText.textContent = `${currentQuestionIndex + 1}. ${currentQuestion.question}`;
+    questionText.innerHTML = `${currentQuestionIndex + 1}. ${formatMathText(currentQuestion.question)}`;
     
     // Show question image if available
     if (currentQuestion.imageUrl) {
@@ -2616,7 +2616,7 @@ function loadQuestion() {
         currentQuestion.options.forEach(option => {
             const optionDiv = document.createElement('div');
             optionDiv.classList.add('option');
-            optionDiv.textContent = option;
+            optionDiv.innerHTML = formatMathText(option);
             optionDiv.onclick = () => selectOption(optionDiv, option);
             optionsContainer.appendChild(optionDiv);
         });
