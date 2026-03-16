@@ -536,14 +536,28 @@ searchInput.oninput = () => {
             `;
         }
 
-        div.innerHTML = `
-            <p class="question-text-result"><b>${i + 1}. ${q.question}</b></p>
-            ${q.imageUrl ? `<img src="${q.imageUrl}" class="question-result-image">` : ''}
-            ${optionsHtml}
-            <p><b>Answer:</b> <span class="correct-answer">${q.answer}</span></p>
-            <p class="time-limit">⏱ ${q.timeLimit ? q.timeLimit + ' sec' : 'N/A'}</p>
-            ${explanationButtonHtml}
-        `;
+div.innerHTML = `
+    <p class="question-text-result"><b>${i + 1}. ${q.question}</b></p>
+
+    ${q.imageUrl ? `<img src="${q.imageUrl}" class="question-result-image">` : ''}
+
+    ${optionsHtml}
+
+    <p><b>Answer:</b> 
+      <span class="correct-answer">${q.answer}</span>
+    </p>
+
+    <p class="time-limit">⏱ ${q.timeLimit ? q.timeLimit + ' sec' : 'N/A'}</p>
+
+    ${q.explanation ? `
+        <div class="explanation-box">
+            <b>Explanation:</b>
+            <p>${q.explanation}</p>
+        </div>
+    ` : ""}
+
+    ${explanationButtonHtml}
+`;
 
         resultsContainer.appendChild(div);
     });
