@@ -32,29 +32,99 @@ const quizzes = [
         ]
     },
 {
-        "id": "",
-        "name": "",
+        "id": "Class 10 Maths MCQs for Quadratic Equations",
+        "name": "Class 10 Maths MCQs for Quadratic Equations",
         "description": "",
         "enabled": true,
         "questions": [
             {
-                "question": "sqrt 25 =?",
-                "type": "input",
-                "options": [],
-                "answer": "5",
-                "timeLimit": 30,
+                "question": "Equation of (x+1)^2-x^2=0 has number of real roots equal to:",
+                "type": "mcq",
+                "options": [
+                    "1",
+                    "2",
+                    "3",
+                    "4"
+                ],
+                "answer": "1",
+                "timeLimit": 300,
                 "imageUrl": "",
-                "explanation": "sqrt(25)\n\n=5",
+                "explanation": "(x+1)^2-x^2=0\n\nx^2+2x+1-x2 = 0\n\n2x+1=0\n\nx=-½\nHence, there is one real root.",
                 "explanationImageUrl": ""
             },
             {
-                "question": "4^2=?",
-                "type": "input",
-                "options": [],
-                "answer": "16",
-                "timeLimit": 30,
+                "question": "The roots of 100x^2 – 20x + 1 = 0 is:",
+                "type": "mcq",
+                "options": [
+                    "1/20 and 1/20",
+                    "1/10 and 1/20",
+                    "1/10 and 1/10",
+                    "None of the above"
+                ],
+                "answer": "1/10 and 1/10",
+                "timeLimit": 300,
                 "imageUrl": "",
-                "explanation": "4^2\n\n=4*4\n=16",
+                "explanation": "Given, 100x^2 – 20x + 1=0\n\n100x^2 – 10x – 10x + 1 = 0\n\n10x(10x – 1) -1(10x – 1) = 0\n\n(10x – 1)^2 = 0\n\n∴ (10x – 1) = 0 or (10x – 1) = 0\n\n⇒x = 1/10 or x = 1/10",
+                "explanationImageUrl": ""
+            },
+            {
+                "question": "The sum of two numbers is 27 and product is 182. The numbers are:",
+                "type": "mcq",
+                "options": [
+                    "12 and 13",
+                    "13 and 14",
+                    "12 and 15",
+                    "13 and 24"
+                ],
+                "answer": "13 and 14",
+                "timeLimit": 300,
+                "imageUrl": "",
+                "explanation": "Let x is one number\n\nAnother number = 27 – x\n\nProduct of two numbers = 182\n\nx(27 – x) = 182\n\n⇒ x^2 – 27x – 182 = 0\n\n⇒ x^2 – 13x – 14x + 182 = 0\n\n⇒ x(x – 13) -14(x – 13) = 0\n\n⇒ (x – 13)(x -14) = 0\n\n⇒ x = 13 or x = 14",
+                "explanationImageUrl": ""
+            },
+            {
+                "question": "If ½ is a root of the quadratic equation x^2-mx-5/4=0, then value of m is:",
+                "type": "mcq",
+                "options": [
+                    "2",
+                    "-2",
+                    "-3",
+                    "3"
+                ],
+                "answer": "-2",
+                "timeLimit": 300,
+                "imageUrl": "",
+                "explanation": "Given x=½ as root of equation x^2-mx-5/4=0.\n\n(½)^2 – m(½) – 5/4 = 0\n\n¼-m/2-5/4=0\n\nm=-2",
+                "explanationImageUrl": ""
+            },
+            {
+                "question": "The altitude of a right triangle is 7 cm less than its base. If the hypotenuse is 13 cm, the other two sides of the triangle are equal to:",
+                "type": "mcq",
+                "options": [
+                    "Base = 10cm and Altitude = 5cm",
+                    "Base = 12cm and Altitude = 5cm",
+                    "Base = 14cm and Altitude = 10cm",
+                    "Base = 12cm and Altitude = 10cm"
+                ],
+                "answer": "Base=12cm and Altitude=5cm",
+                "timeLimit": 300,
+                "imageUrl": "",
+                "explanation": "Let the base be x cm.\n\nAltitude = (x – 7) cm\n\nIn a right triangle,\n\nBase^2 + Altitude^2 = Hypotenuse^2 (From Pythagoras theorem)\n\n∴ x^2 + (x – 7)^2 = 132\n\nBy solving the above equation, we get;\n\n⇒ x = 12 or x = – 5\n\nSince the side of the triangle cannot be negative.\n\nTherefore, base = 12cm and altitude = 12-7 = 5cm",
+                "explanationImageUrl": ""
+            },
+            {
+                "question": "The roots of quadratic equation 2x^2 + x + 4 = 0 are:",
+                "type": "mcq",
+                "options": [
+                    "Positive and negative",
+                    "Both Positive",
+                    "Both Negative",
+                    "No real roots"
+                ],
+                "answer": "No real roots",
+                "timeLimit": 300,
+                "imageUrl": "",
+                "explanation": "2x^2 + x + 4 = 0\n\n⇒ 2x^2 + x = -4\n\nDividing the equation by 2, we get\n\n⇒ x^2 + 1/2x = -2\n\n⇒ x^2 + 2 × x × 1/4 = -2\n\nBy adding (1/4)^2 to both sides of the equation, we get\n\n⇒ (x)^2 + 2 × x × 1/4 + (1/4)^2 = (1/4)^2 – 2\n\n⇒ (x + 1/4)^2 = 1/16 – 2\n\n⇒ (x + 1/4)^2 = -31/16\n\nThe square root of negative number is imaginary, therefore, there is no real root for the given equation.",
                 "explanationImageUrl": ""
             }
         ]
