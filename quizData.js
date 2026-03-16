@@ -81,14 +81,14 @@ const quizzes = [
                 "explanation": "Let the base be x cm.\n\nAltitude = (x – 7) cm\n\nIn a right triangle,\n\nBase^2 + Altitude^2 = Hypotenuse^2 (From Pythagoras theorem)\n\n∴ x^2 + (x – 7)^2 = 132\n\nBy solving the above equation, we get;\n\n⇒ x = 12 or x = – 5\n\nSince the side of the triangle cannot be negative.\n\nTherefore, base = 12cm and altitude = 12-7 = 5cm",
                 "explanationImageUrl": ""
             },
-          {
-                "question": "dad",
+           {
+                "question": "sqrt 6 + sqrt 6 + sqrt 6 + .... is",
                 "type": "input",
                 "options": [],
-                "answer": "d",
-                "timeLimit": 30,
+                "answer": "3",
+                "timeLimit": 300,
                 "imageUrl": "",
-                "explanation": "dad",
+                "explanation": "Let, sqrt 6 + sqrt 6 + sqrt 6 + .... = x\n\nHence, we can write, √(6+x) = x\n\n6+x=x^2\n\nx^2-x-6=0\n\nx^2-3x+2x-6=0\n\nx(x-3)+2(x-3)=0\n\n(x+2) (x-3) = 0\n\nx=-2,3\nSince, x cannot be negative, therefore, x=3",
                 "explanationImageUrl": ""
             },
             {
