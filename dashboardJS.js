@@ -1563,13 +1563,22 @@ function handleNextButtonClick() {
     }
 
 
-    if (currentQuestion.type === 'input') {
-        // For input type, if user input is empty, require an answer or skip
-        if (!answer || answer.trim() === '') {
-            showInfoModal("Please enter an answer or skip the question.");
-            return;
-        }
-    } else if (answer === null) { // For multiple choice, check if an option was selected
+if (currentQuestion.type === 'input') {
+
+    if (!answer || answer.trim() === '') {
+        showInfoModal("Please enter an answer or skip the question.");
+        return;
+    }
+
+    const correctAnswer = currentQuestion.answer.trim().toLowerCase();
+    const userAnswer = answer.trim().toLowerCase();
+
+    const isCorrect = (userAnswer === correctAnswer);
+
+    showInstantFeedback(isCorrect);
+
+    return; // stop moving automatically
+} else if (answer === null) { // For multiple choice, check if an option was selected
         showInfoModal("Please select an option or skip the question.");
         return;
     }

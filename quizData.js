@@ -1,37 +1,6 @@
 // mergedQuizData.js
 const quizzes = [
-    {
-        "id": "simple quiz",
-        "name": "Trial Quiz",
-        "description": "This quiz contains just a demo of how the site works. Feel free to explore the tabs after attempting this module.",
-        "enabled": true,
-        "questions": [
-            {
-                "question": "Which planet is known as the Red Planet?",
-                "type": "input",
-                "options": [],
-                "answer": "Mars",
-                "timeLimit": 30,
-                "imageUrl": "",
-                "explanationImageUrl": ""
-            },
-            {
-                "question": "Which vitamin is produced when the skin is exposed to sunlight?",
-                "type": "mcq",
-                "options": [
-                    "Vitamin A",
-                    "Vitamin B",
-                    "Vitamin C",
-                    "Vitamin D"
-                ],
-                "answer": "Vitamin D",
-                "timeLimit": 30,
-                "imageUrl": "",
-                "explanationImageUrl": ""
-            }
-        ]
-    },
-{
+  {
         "id": "Class 10 Maths MCQs for Quadratic Equations",
         "name": "Class 10 Maths MCQs for Quadratic Equations",
         "description": "",
@@ -112,6 +81,16 @@ const quizzes = [
                 "explanation": "Let the base be x cm.\n\nAltitude = (x – 7) cm\n\nIn a right triangle,\n\nBase^2 + Altitude^2 = Hypotenuse^2 (From Pythagoras theorem)\n\n∴ x^2 + (x – 7)^2 = 132\n\nBy solving the above equation, we get;\n\n⇒ x = 12 or x = – 5\n\nSince the side of the triangle cannot be negative.\n\nTherefore, base = 12cm and altitude = 12-7 = 5cm",
                 "explanationImageUrl": ""
             },
+          {
+                "question": "dad",
+                "type": "input",
+                "options": [],
+                "answer": "d",
+                "timeLimit": 30,
+                "imageUrl": "",
+                "explanation": "dad",
+                "explanationImageUrl": ""
+            },
             {
                 "question": "The roots of quadratic equation 2x^2 + x + 4 = 0 are:",
                 "type": "mcq",
@@ -126,7 +105,7 @@ const quizzes = [
                 "imageUrl": "",
                 "explanation": "2x^2 + x + 4 = 0\n\n⇒ 2x^2 + x = -4\n\nDividing the equation by 2, we get\n\n⇒ x^2 + 1/2x = -2\n\n⇒ x^2 + 2 × x × 1/4 = -2\n\nBy adding (1/4)^2 to both sides of the equation, we get\n\n⇒ (x)^2 + 2 × x × 1/4 + (1/4)^2 = (1/4)^2 – 2\n\n⇒ (x + 1/4)^2 = 1/16 – 2\n\n⇒ (x + 1/4)^2 = -31/16\n\nThe square root of negative number is imaginary, therefore, there is no real root for the given equation.",
                 "explanationImageUrl": ""
-            }
+            },
         ]
     },
     {
@@ -171,7 +150,7 @@ const quizzes = [
         "id": "Fundamentals of Computers & Operating Systems",
         "name": "Fundamentals of Computers & Operating Systems",
         "description": "",
-        "enabled": true,
+        "enabled": false,
         "questions": [
             {
                 "question": "Who is considered the father of computers?",
@@ -879,7 +858,7 @@ const quizzes = [
         "id": "Web Designing & Development",
         "name": "Web Designing & Development",
         "description": "",
-        "enabled": true,
+        "enabled": false,
         "questions": [
             
             {
@@ -1504,7 +1483,7 @@ const quizzes = [
         "id": "Database Management System (DBMS)",
         "name": "Database Management System (DBMS)",
         "description": "",
-        "enabled": true,
+        "enabled": false,
         "questions": [
             {
                 "question": "What is DBMS?",
@@ -2212,7 +2191,7 @@ const quizzes = [
         "id": "Computer Networks & Security",
         "name": "Computer Networks & Security",
         "description": "",
-        "enabled": true,
+        "enabled": false,
         "questions": [
             {
                 "question": "Which layer of the OSI model is responsible for end-to-end communication and error handling?",
@@ -2920,7 +2899,7 @@ const quizzes = [
         "id": "math",
         "name": "Simple Math Module",
         "description": "A simple math module consisting math problems.",
-        "enabled": true,
+        "enabled": false,
         "questions": [
             {
                 "question": "If a rectangle has a length of 3x+2 and a width of x−1, what's its perimeter in terms of x?",
@@ -2946,7 +2925,7 @@ const quizzes = [
         "id": "Internet & Web Technology",
         "name": "Internet & Web Technology (MCQ)",
         "description": "",
-        "enabled": true,
+        "enabled": false,
         "questions": [
             {
                 "question": "What is the main function of a web browser?",
@@ -3562,14 +3541,14 @@ const quizzes = [
                 "timeLimit": 60,
                 "imageUrl": "",
                 "explanationImageUrl": ""
-            }
+            },
         ]
     },
     {
         "id": "11",
         "name": "Microsoft Office & Productivity Tools MS Word",
         "description": "",
-        "enabled": true,
+        "enabled": false,
         "questions": [
             {
                 "question": "What is the default font in Microsoft Word?",
