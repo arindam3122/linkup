@@ -2739,7 +2739,7 @@ document.getElementById('addQuestionBtn').addEventListener('click', () => {
 
       <div class="question-body">
         <label>Question:</label>
-        <textarea class="questionText"></textarea><br><br>
+        <textarea class="questionText" placeholder="Write your question here. USE sqrt(x) for square root and x^ for square"></textarea><br><br>
 
         <label>Type:</label>
         <select class="questionType">
@@ -2764,7 +2764,7 @@ document.getElementById('addQuestionBtn').addEventListener('click', () => {
         <label>Question Image URL:</label>
         <input type="text" class="questionImage"><br><br>
         <label>Explanation:</label>
-        <textarea class="explanationText" placeholder="Write explanation for the answer"></textarea><br><br>
+        <textarea class="explanationText" placeholder="Write explanation for the answer. USE sqrt(x) for square root and x^ for square"></textarea><br><br>
         <label>Explanation Image URL:</label>
         <input type="text" class="explanationImage"><br><br>
       </div>
