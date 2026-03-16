@@ -32,6 +32,44 @@ const quizzes = [
         ]
     },
     {
+        "id": "CUET-UG - Biology",
+        "name": "CUET-UG - Biology",
+        "description": "Entrance Exam, 2025",
+        "enabled": true,
+        "questions": [
+            {
+                "question": "Which one of the following guides the entry of the pollen tube into the\nembryo sac?",
+                "type": "mcq",
+                "options": [
+                    "Antipodal Cells",
+                    "Filiform apparatus",
+                    "Micropyle",
+                    "Synergids"
+                ],
+                "answer": "Filiform apparatus",
+                "timeLimit": 30,
+                "imageUrl": "",
+                "explanation": "The filiform apparatus—finger-like wall ingrowths of the synergids at the\nmicropylar end—serves as the guiding structure that directs the pollen\ntube into the embryo sac. The micropyle is only the opening, and antipodals\nare at the opposite (chalazal) end.",
+                "explanationImageUrl": ""
+            },
+            {
+                "question": "Antibody molecule has:",
+                "type": "mcq",
+                "options": [
+                    "Two peptide chain",
+                    "Three peptide chain",
+                    "Four peptide chain",
+                    "One polypeptide chain"
+                ],
+                "answer": "Four peptide chain",
+                "timeLimit": 30,
+                "imageUrl": "",
+                "explanation": "A typical antibody (immunoglobulin) consists of four polypeptide chainsstwo identical heavy chains and two identical light chains-linked by disulfide\nbonds to form a Y-shaped molecule.",
+                "explanationImageUrl": ""
+            }
+        ]
+    },
+    {
         "id": "Fundamentals of Computers & Operating Systems",
         "name": "Fundamentals of Computers & Operating Systems",
         "description": "",

@@ -1365,16 +1365,58 @@ function showInstantFeedback(isCorrect) {
         opt.style.cursor = "not-allowed";
     });
 
-    // === 🧠 Simplified feedback ===
-    if (isCorrect) {
-        feedbackBox.innerHTML = `✅ Correct!`;
-        feedbackBox.classList.add("correct");
-        feedbackBox.classList.remove("wrong");
-    } else {
-        feedbackBox.innerHTML = `❌ Wrong Answer!`;
-        feedbackBox.classList.add("wrong");
-        feedbackBox.classList.remove("correct");
-    }
+let html = "";
+
+// Correct / Wrong message
+if (isCorrect) {
+
+    html += `
+    <div class="feedback-message feedback-correct">
+        ✅ Correct!
+    </div>
+    `;
+
+} else {
+
+    html += `
+    <div class="feedback-message feedback-wrong">
+        ❌ Wrong Answer! <br>
+        <strong>Correct Answer:</strong> ${currentQuestion.answer}
+    </div>
+    `;
+}
+
+
+// Explanation card
+if (currentQuestion.explanation && currentQuestion.explanation.trim() !== "") {
+
+    html += `
+    <div class="explanation-card">
+
+        <div class="explanation-title">
+            📘 Explanation
+        </div>
+
+        <div class="explanation-text">
+            ${currentQuestion.explanation}
+        </div>
+
+    </div>
+    `;
+}
+
+
+// Explanation image
+if (currentQuestion.explanationImageUrl && currentQuestion.explanationImageUrl.trim() !== "") {
+
+    html += `
+    <div class="explanation-image">
+        <img src="${currentQuestion.explanationImageUrl}">
+    </div>
+    `;
+}
+
+feedbackBox.innerHTML = html;
 
     // Show feedback box + Move On
     feedbackBox.style.display = "block";
@@ -1664,13 +1706,14 @@ function calculateResults() {
         const timeSpent = questionTimesTaken[index] !== undefined ? questionTimesTaken[index] : 0;
 
         // Common properties for quizDetailsForDisplay
-        const commonDetails = {
-            question: question.question,
-            correctAnswer: question.answer,
-            timeTaken: timeSpent,
-            imageUrl: question.imageUrl || null, // Add imageUrl here
-            explanationImageUrl: question.explanationImageUrl || null // New: Image for explanation
-        };
+    const commonDetails = {
+    question: question.question,
+    correctAnswer: question.answer,
+    timeTaken: timeSpent,
+    imageUrl: question.imageUrl || null,
+    explanation: question.explanation || null,   // ⭐ ADD THIS LINE
+    explanationImageUrl: question.explanationImageUrl || null
+    };
 
         if (status === 'skipped') {
             skippedQuestionsTotal++;
@@ -2675,7 +2718,8 @@ document.getElementById('addQuestionBtn').addEventListener('click', () => {
 
         <label>Question Image URL:</label>
         <input type="text" class="questionImage"><br><br>
-
+        <label>Explanation:</label>
+        <textarea class="explanationText" placeholder="Write explanation for the answer"></textarea><br><br>
         <label>Explanation Image URL:</label>
         <input type="text" class="explanationImage"><br><br>
       </div>
@@ -2738,15 +2782,16 @@ document.getElementById('downloadQuizBtn').addEventListener('click', () => {
         const type = q.querySelector('.questionType').value;
         const options = type === 'mcq' ? Array.from(q.querySelectorAll('.optionField')).map(o => o.value.trim()) : [];
         
-        quiz.questions.push({
-            question: q.querySelector('.questionText').value.trim(),
-            type,
-            options,
-            answer: q.querySelector('.questionAnswer').value.trim(),
-            timeLimit: parseInt(q.querySelector('.questionTime').value) || 30,
-            imageUrl: q.querySelector('.questionImage').value.trim(),
-            explanationImageUrl: q.querySelector('.explanationImage').value.trim()
-        });
+     quiz.questions.push({
+    question: q.querySelector('.questionText').value.trim(),
+    type,
+    options,
+    answer: q.querySelector('.questionAnswer').value.trim(),
+    timeLimit: parseInt(q.querySelector('.questionTime').value) || 30,
+    imageUrl: q.querySelector('.questionImage').value.trim(),
+    explanation: q.querySelector('.explanationText').value.trim(),
+    explanationImageUrl: q.querySelector('.explanationImage').value.trim()
+    });
     });
 
     const blob = new Blob([JSON.stringify([quiz], null, 4)], { type: "application/json" });
