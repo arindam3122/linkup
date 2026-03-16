@@ -2342,3 +2342,15 @@ mark.highlight {
         transform: translateY(0);
     }
 }
+.explanation-box{
+    background:#f5f7ff;
+    border-left:4px solid #4a6cf7;
+    padding:12px 14px;
+    margin-top:10px;
+    border-radius:6px;
+    font-size:16px;
+    line-height:1.6;
+}
+.explanation-box b{
+    font-size:17px;
+}
