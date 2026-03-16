@@ -31,6 +31,29 @@ const quizzes = [
             }
         ]
     },
+        {
+        "id": "",
+        "name": "",
+        "description": "",
+        "enabled": true,
+        "questions": [
+            {
+                "question": "Equation of (x+1)^2-x^2=0 has number of real roots equal to:",
+                "type": "mcq",
+                "options": [
+                    "1",
+                    "2",
+                    "3",
+                    "4"
+                ],
+                "answer": "1",
+                "timeLimit": 300,
+                "imageUrl": "",
+                "explanation": "(x+1)^2-x^2=0\n\nX^2+2x+1-x^2 = 0\n\n2x+1=0\n\nx=-½",
+                "explanationImageUrl": ""
+            }
+        ]
+    },
     {
         "id": "CUET-UG - Biology",
         "name": "CUET-UG - Biology",

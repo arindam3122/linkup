@@ -198,7 +198,26 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 });
 
+function formatMathText(text) {
+    if (!text) return "";
 
+    // Convert line breaks to HTML spacing
+    text = text.replace(/\n/g, "<br>");
+
+    // Convert squares
+    text = text.replace(/\^2/g, "²");
+
+    // Convert cubes
+    text = text.replace(/\^3/g, "³");
+
+    // Convert sqrt()
+    text = text.replace(/sqrt\((.*?)\)/g, "√($1)");
+
+    // Convert sqrt number
+    text = text.replace(/sqrt/g, "√");
+
+    return text;
+}
 function showAllQuizzesSection() {
     hideAllSections();
     document.getElementById('allQuizzesContainer').style.display = 'block';
@@ -328,7 +347,7 @@ function showQuizDetails(quiz) {
 
             // ✅ Render question block
 div.innerHTML = `
-  <p><strong>${i + 1}. ${q.question}</strong></p>
+  <p><strong>${i + 1}. ${formatMathText(q.question)}</strong></p>
   ${questionImageHtml}
 
   <p>Your Answer: ${q.userAnswer ?? "N/A"}</p>
@@ -342,7 +361,7 @@ div.innerHTML = `
   ${q.explanation ? `
       <div class="explanation-box">
         <b>Explanation:</b>
-        <p>${q.explanation}</p>
+        <p>${formatMathText(q.explanation)}</p>
       </div>
   ` : ""}
 
@@ -537,7 +556,7 @@ searchInput.oninput = () => {
         }
 
 div.innerHTML = `
-    <p class="question-text-result"><b>${i + 1}. ${q.question}</b></p>
+    <p class="question-text-result"><b>${i + 1}. ${formatMathText(q.question)}</b></p>
 
     ${q.imageUrl ? `<img src="${q.imageUrl}" class="question-result-image">` : ''}
 
@@ -552,7 +571,7 @@ div.innerHTML = `
     ${q.explanation ? `
         <div class="explanation-box">
             <b>Explanation:</b>
-            <p>${q.explanation}</p>
+            <p>${formatMathText(q.explanation)}</p>
         </div>
     ` : ""}
 
