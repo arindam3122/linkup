@@ -75,7 +75,7 @@ const quizzes = [
                     "Base = 14cm and Altitude = 10cm",
                     "Base = 12cm and Altitude = 10cm"
                 ],
-                "answer": "Base=12cm and Altitude=5cm",
+                "answer": "Base = 12cm and Altitude = 5cm",
                 "timeLimit": 300,
                 "imageUrl": "",
                 "explanation": "Let the base be x cm.\n\nAltitude = (x – 7) cm\n\nIn a right triangle,\n\nBase^2 + Altitude^2 = Hypotenuse^2 (From Pythagoras theorem)\n\n∴ x^2 + (x – 7)^2 = 132\n\nBy solving the above equation, we get;\n\n⇒ x = 12 or x = – 5\n\nSince the side of the triangle cannot be negative.\n\nTherefore, base = 12cm and altitude = 12-7 = 5cm",
