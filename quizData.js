@@ -184,7 +184,7 @@ const quizzes = [
                     "None of the above"
                 ],
                 "answer": "Hyaluronidase",
-                "timeLimit": 10,
+                "timeLimit": 120,
                 "imageUrl": "",
                 "explanation": "",
                 "explanationImageUrl": ""
