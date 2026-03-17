@@ -1381,7 +1381,27 @@ function showInstantFeedback(isCorrect) {
     const moveOnBtn = document.getElementById("moveOnButton");
     const currentQuestion = currentQuiz.questions[currentQuestionIndex];
     const selectedAnswer = userAnswers[currentQuestionIndex];
+    // ✅ NEW: Handle input type (fill in the blank)
+if (currentQuestion.type === 'input') {
+    const inputField = document.querySelector('.input-answer-field');
 
+    if (inputField) {
+        // 🔒 Disable input
+        inputField.disabled = true;
+        inputField.style.backgroundColor = "#eee";
+        inputField.style.cursor = "not-allowed";
+
+        // 🎨 Highlight correct/wrong
+        const correctAnswer = currentQuestion.answer.trim().toLowerCase();
+        const userAnswer = selectedAnswer ? selectedAnswer.trim().toLowerCase() : "";
+
+        if (userAnswer === correctAnswer) {
+            inputField.style.border = "2px solid green";
+        } else {
+            inputField.style.border = "2px solid red";
+        }
+    }
+}
     // 🔹 Clear previous highlights
     document.querySelectorAll('.option').forEach(opt => {
         opt.classList.remove('correct-option', 'wrong-option', 'selected');
