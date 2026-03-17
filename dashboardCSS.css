@@ -416,7 +416,7 @@ header {
 }
 
 .start-quiz-card-btn {
-    background-color: #bd03ba; /* Accent blue */
+    background-color: #13bd03; /* Accent blue */
     color: white;
     border: none;
     padding: 12px 25px;
@@ -434,7 +434,7 @@ header {
 }
 
 .start-quiz-card-btn:hover {
-    background-color: #a30486;
+    background-color: #0f8f03;
     transform: translateY(-2px);
     box-shadow: 0 5px 12px rgba(0, 0, 0, 0.2);
 }
@@ -444,11 +444,11 @@ header {
 }
 
 .start-quiz-card-btn.disabled-button {
-    background-color: #bdc3c7; /* Light gray for disabled */
+    background-color: #b9bfc1; /* Light gray for disabled */
     cursor: not-allowed;
     box-shadow: none;
     transform: none;
-    color: #6d7d8b;
+    color: #060606;
 }
 
 /* Quiz Container (In-quiz layout) */
