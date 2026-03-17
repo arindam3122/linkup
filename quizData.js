@@ -4,7 +4,7 @@ const quizzes = [
         "id": "Class 10 Maths MCQs for Quadratic Equations",
         "name": "Class 10 Maths MCQs for Quadratic Equations",
         "description": "",
-        "enabled": true,
+        "enabled": false,
         "questions": [
             {
                 "question": "Equation of (x+1)^2-x^2=0 has number of real roots equal to:",
@@ -104,6 +104,66 @@ const quizzes = [
                 "timeLimit": 300,
                 "imageUrl": "",
                 "explanation": "2x^2 + x + 4 = 0\n\n⇒ 2x^2 + x = -4\n\nDividing the equation by 2, we get\n\n⇒ x^2 + 1/2x = -2\n\n⇒ x^2 + 2 × x × 1/4 = -2\n\nBy adding (1/4)^2 to both sides of the equation, we get\n\n⇒ (x)^2 + 2 × x × 1/4 + (1/4)^2 = (1/4)^2 – 2\n\n⇒ (x + 1/4)^2 = 1/16 – 2\n\n⇒ (x + 1/4)^2 = -31/16\n\nThe square root of negative number is imaginary, therefore, there is no real root for the given equation.",
+                "explanationImageUrl": ""
+            },
+            {
+                "question": "The sum of the reciprocals of Rehman’s ages 3 years ago and 5 years from now is 1/3. The present age of Rehman is:",
+                "type": "mcq",
+                "options": [
+                    "7",
+                    "10",
+                    "5",
+                    "6"
+                ],
+                "answer": "7",
+                "timeLimit": 300,
+                "imageUrl": "",
+                "explanation": "Let, x is the present age of Rehman\n\nThree years ago his age = x – 3\n\nFive years later his age = x + 5\n\nGiven, the sum of the reciprocals of Rehman’s ages 3 years ago and after 5 years is equal to 1/3.\n\n∴ 1/x-3 + 1/x-5 = 1/3\n\n(x+5+x-3)/(x-3)(x+5) = 1/3\n\n(2x+2)/(x-3)(x+5) = 1/3\n\n⇒ 3(2x + 2) = (x-3)(x+5)\n\n⇒ 6x + 6 = x^2 + 2x – 15\n\n⇒ x^2 – 4x – 21 = 0\n\n⇒ x^2 – 7x + 3x – 21 = 0\n\n⇒ x(x – 7) + 3(x – 7) = 0\n\n⇒ (x – 7)(x + 3) = 0\n\n⇒ x = 7, -3\n\nWe know age cannot be negative, hence the answer is 7.",
+                "explanationImageUrl": ""
+            },
+            {
+                "question": "A train travels 360 km at a uniform speed. If the speed had been 5 km/h more, it would have taken 1 hour less for the same journey. Find the speed of the train.",
+                "type": "mcq",
+                "options": [
+                    "30 km/hr",
+                    "40 km/hr",
+                    "50 km/hr",
+                    "60 km/hr"
+                ],
+                "answer": "40 km/hr",
+                "timeLimit": 300,
+                "imageUrl": "",
+                "explanation": "Let x km/hr be the speed of train.\n\nTime required to cover 360 km = 360/x hr.\n\nAs per the question given,\n\n⇒ (x + 5)(360-1/x) = 360\n\n⇒ 360 – x + 1800-5/x = 360\n\n⇒ x^2 + 5x + 10x – 1800 = 0\n\n⇒ x(x + 45) -40(x + 45) = 0\n\n⇒ (x + 45)(x – 40) = 0\n\n⇒ x = 40, -45\n\nNegative value is not considered for speed hence the answer is 40km/hr.",
+                "explanationImageUrl": ""
+            },
+            {
+                "question": "If one root of equation 4x^2-2x+k-4=0 is reciprocal of the other. The value of k is:",
+                "type": "mcq",
+                "options": [
+                    "-8",
+                    "8",
+                    "4",
+                    "-4"
+                ],
+                "answer": "8",
+                "timeLimit": 300,
+                "imageUrl": "",
+                "explanation": "If one root is reciprocal of others, then the product of roots will be:\n\nα x 1/α = (k-4)/4\n\nk-4 = 4\n\nk = 8",
+                "explanationImageUrl": ""
+            },
+            {
+                "question": "Which one of the following is not a quadratic equation?",
+                "type": "mcq",
+                "options": [
+                    "(x + 2)^2 = 2(x + 3)",
+                    "x^2 + 3x = (–1) (1 – 3x)^2",
+                    "(x + 2) (x – 1) = x^2 – 2x – 3",
+                    "x^3 – x^2 + 2x + 1 = (x + 1)^3"
+                ],
+                "answer": "(x + 2) (x – 1) = x^2 – 2x – 3",
+                "timeLimit": 300,
+                "imageUrl": "",
+                "explanation": "We know that the degree of a quadratic equation is 2.\n\nBy verifying the options,\n\n(a) (x + 2)^2 = 2(x + 3) \n\nx^2 + 4x + 4 = 2x + 6\n\nx^2 + 2x – 2 = 0\n\nThis is a quadratic equation.\n\n(b) x^2 + 3x = (–1) (1 – 3x)^2\n\nx^2 + 3x = -1(1 + 9x2 – 6x)\n\nx^2 + 3x + 1 + 9x^2 – 6x = 0\n\n10x^2 – 3x + 1 = 0\n\nThis is a quadratic equation.\n\n(c) (x + 2) (x – 1) = x^2 – 2x – 3 \n\nx^2 + x – 2 = x^2 – 2x – 3\n\nx^2 + x – 2 – x^2 + 2x + 3 = 0\n\n3x + 1 = 0\n\nThis is not a quadratic equation.",
                 "explanationImageUrl": ""
             },
         ]
