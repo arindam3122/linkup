@@ -172,7 +172,7 @@ const quizzes = [
         "id": "Human Reproduction for Class 12",
         "name": "Human Reproduction for Class 12",
         "description": "",
-        "enabled": false,
+        "enabled": true,
         "questions": [
             {
                 "question": "_______ is a lytic enzyme released by the sperm.",
