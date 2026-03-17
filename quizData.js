@@ -4,7 +4,7 @@ const quizzes = [
         "id": "Class 10 Maths MCQs for Quadratic Equations",
         "name": "Class 10 Maths MCQs for Quadratic Equations",
         "description": "",
-        "enabled": false,
+        "enabled": true,
         "questions": [
             {
                 "question": "Equation of (x+1)^2-x^2=0 has number of real roots equal to:",
