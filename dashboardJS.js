@@ -7,14 +7,24 @@
  * @returns {string} Formatted time string (e.g., "01 min : 30 sec" for 90 seconds).
  */
 function formatTime(totalSeconds) {
-    if (totalSeconds === undefined || totalSeconds === null || isNaN(totalSeconds)) {
-        return 'N/A';
+    if (!totalSeconds || isNaN(totalSeconds)) return 'N/A';
+
+    const hours = Math.floor(totalSeconds / 3600);
+    const minutes = Math.floor((totalSeconds % 3600) / 60);
+    const seconds = totalSeconds % 60;
+
+    if (hours > 0) {
+        return `${hours} hr ${minutes} min ${seconds} sec`;
     }
+    return `${minutes} min ${seconds} sec`;
+}
+function formatTimeShort(totalSeconds) {
+    if (!totalSeconds || isNaN(totalSeconds)) return '0 min : 0 sec';
+
     const minutes = Math.floor(totalSeconds / 60);
     const seconds = totalSeconds % 60;
-    const formattedMinutes = String(minutes).padStart(2, 0);
-    const formattedSeconds = String(seconds).padStart(2, 0);
-    return `${formattedMinutes} min : ${formattedSeconds} sec`;
+
+    return `${minutes} min : ${seconds} sec`;
 }
 const createQuizLink = document.getElementById('createQuizLink');
 const createQuizContainer = document.getElementById('createQuizContainer');
@@ -555,19 +565,18 @@ searchInput.oninput = () => {
             `;
         }
 
-div.innerHTML = `
-    <p class="question-text-result"><b>${i + 1}. ${formatMathText(q.question)}</b></p>
+       div.innerHTML = `
+       <p class="question-text-result"><b>${i + 1}. ${formatMathText(q.question)}</b></p>
 
-    ${q.imageUrl ? `<img src="${q.imageUrl}" class="question-result-image">` : ''}
+      <p class="time-limit"> ${q.timeLimit ? formatTimeShort(q.timeLimit) : 'N/A'}</p>
 
-    ${optionsHtml}
+      ${q.imageUrl ? `<img src="${q.imageUrl}" class="question-result-image">` : ''}
 
-    <p><b>Answer:</b> 
+      ${optionsHtml}
+
+     <p><b>Answer:</b> 
       <span class="correct-answer">${q.answer}</span>
-    </p>
-
-    <p class="time-limit">⏱ ${q.timeLimit ? q.timeLimit + ' sec' : 'N/A'}</p>
-
+     </p>
     ${q.explanation ? `
         <div class="explanation-box">
             <b>Explanation:</b>
@@ -1251,9 +1260,7 @@ function renderQuizList() {
         // ✅ Calculate total questions and total time
         const totalQuestions = quiz.questions.length;
         const totalTime = quiz.questions.reduce((sum, q) => sum + (q.timeLimit || 0), 0);
-        const formattedTime = totalTime >= 60 
-            ? `${Math.floor(totalTime / 60)} min ${totalTime % 60} sec`
-            : `${totalTime} sec`;
+        const formattedTime = formatTime(totalTime);
 
         quizCard.innerHTML = `
             <h3>${quiz.name}</h3>
