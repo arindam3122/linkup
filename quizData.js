@@ -330,7 +330,7 @@ const quizzes = [
         "id": "Problems on Simultaneous Linear Equations",
         "name": "Problems on Simultaneous Linear Equations",
         "description": "",
-        "enabled": false,
+        "enabled": true,
         "questions": [
             {
                 "question": "The sum of two numbers is 50 and their difference is 16. Find the numbers. WRITE IN FORMAT A/B WHERE VALUE OF A IS BIGGER THAN B",
