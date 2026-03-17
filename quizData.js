@@ -172,7 +172,7 @@ const quizzes = [
         "id": "CUET-UG - Biology",
         "name": "CUET-UG - Biology",
         "description": "Entrance Exam, 2025",
-        "enabled": true,
+        "enabled": false,
         "questions": [
             {
                 "question": "Which one of the following guides the entry of the pollen tube into the\nembryo sac?",
