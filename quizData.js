@@ -1,7 +1,7 @@
 // mergedQuizData.js
 const quizzes = [
   {
-        "id": "Class 10 Maths MCQs for Quadratic Equations",
+        "id": "MCQs for Quadratic Equations",
         "name": "Class 10 Maths MCQs for Quadratic Equations",
         "description": "",
         "enabled": true,
@@ -16,7 +16,7 @@ const quizzes = [
                     "4"
                 ],
                 "answer": "1",
-                "timeLimit": 300,
+                "timeLimit": 360,
                 "imageUrl": "",
                 "explanation": "(x+1)^2-x^2=0\n\nx^2+2x+1-x2 = 0\n\n2x+1=0\n\nx=-½\nHence, there is one real root.",
                 "explanationImageUrl": ""
@@ -31,7 +31,7 @@ const quizzes = [
                     "None of the above"
                 ],
                 "answer": "1/10 and 1/10",
-                "timeLimit": 300,
+                "timeLimit": 360,
                 "imageUrl": "",
                 "explanation": "Given, 100x^2 – 20x + 1=0\n\n100x^2 – 10x – 10x + 1 = 0\n\n10x(10x – 1) -1(10x – 1) = 0\n\n(10x – 1)^2 = 0\n\n∴ (10x – 1) = 0 or (10x – 1) = 0\n\n⇒x = 1/10 or x = 1/10",
                 "explanationImageUrl": ""
@@ -46,7 +46,7 @@ const quizzes = [
                     "13 and 24"
                 ],
                 "answer": "13 and 14",
-                "timeLimit": 300,
+                "timeLimit": 360,
                 "imageUrl": "",
                 "explanation": "Let x is one number\n\nAnother number = 27 – x\n\nProduct of two numbers = 182\n\nx(27 – x) = 182\n\n⇒ x^2 – 27x – 182 = 0\n\n⇒ x^2 – 13x – 14x + 182 = 0\n\n⇒ x(x – 13) -14(x – 13) = 0\n\n⇒ (x – 13)(x -14) = 0\n\n⇒ x = 13 or x = 14",
                 "explanationImageUrl": ""
@@ -61,7 +61,7 @@ const quizzes = [
                     "3"
                 ],
                 "answer": "-2",
-                "timeLimit": 300,
+                "timeLimit": 360,
                 "imageUrl": "",
                 "explanation": "Given x=½ as root of equation x^2-mx-5/4=0.\n\n(½)^2 – m(½) – 5/4 = 0\n\n¼-m/2-5/4=0\n\nm=-2",
                 "explanationImageUrl": ""
@@ -76,7 +76,7 @@ const quizzes = [
                     "Base = 12cm and Altitude = 10cm"
                 ],
                 "answer": "Base = 12cm and Altitude = 5cm",
-                "timeLimit": 300,
+                "timeLimit": 360,
                 "imageUrl": "",
                 "explanation": "Let the base be x cm.\n\nAltitude = (x – 7) cm\n\nIn a right triangle,\n\nBase^2 + Altitude^2 = Hypotenuse^2 (From Pythagoras theorem)\n\n∴ x^2 + (x – 7)^2 = 132\n\nBy solving the above equation, we get;\n\n⇒ x = 12 or x = – 5\n\nSince the side of the triangle cannot be negative.\n\nTherefore, base = 12cm and altitude = 12-7 = 5cm",
                 "explanationImageUrl": ""
@@ -86,7 +86,7 @@ const quizzes = [
                 "type": "input",
                 "options": [],
                 "answer": "3",
-                "timeLimit": 300,
+                "timeLimit": 360,
                 "imageUrl": "",
                 "explanation": "Let, sqrt 6 + sqrt 6 + sqrt 6 + .... = x\n\nHence, we can write, √(6+x) = x\n\n6+x=x^2\n\nx^2-x-6=0\n\nx^2-3x+2x-6=0\n\nx(x-3)+2(x-3)=0\n\n(x+2) (x-3) = 0\n\nx=-2,3\nSince, x cannot be negative, therefore, x=3",
                 "explanationImageUrl": ""
@@ -101,7 +101,7 @@ const quizzes = [
                     "No real roots"
                 ],
                 "answer": "No real roots",
-                "timeLimit": 300,
+                "timeLimit": 360,
                 "imageUrl": "",
                 "explanation": "2x^2 + x + 4 = 0\n\n⇒ 2x^2 + x = -4\n\nDividing the equation by 2, we get\n\n⇒ x^2 + 1/2x = -2\n\n⇒ x^2 + 2 × x × 1/4 = -2\n\nBy adding (1/4)^2 to both sides of the equation, we get\n\n⇒ (x)^2 + 2 × x × 1/4 + (1/4)^2 = (1/4)^2 – 2\n\n⇒ (x + 1/4)^2 = 1/16 – 2\n\n⇒ (x + 1/4)^2 = -31/16\n\nThe square root of negative number is imaginary, therefore, there is no real root for the given equation.",
                 "explanationImageUrl": ""
@@ -116,7 +116,7 @@ const quizzes = [
                     "6"
                 ],
                 "answer": "7",
-                "timeLimit": 300,
+                "timeLimit": 360,
                 "imageUrl": "",
                 "explanation": "Let, x is the present age of Rehman\n\nThree years ago his age = x – 3\n\nFive years later his age = x + 5\n\nGiven, the sum of the reciprocals of Rehman’s ages 3 years ago and after 5 years is equal to 1/3.\n\n∴ 1/x-3 + 1/x-5 = 1/3\n\n(x+5+x-3)/(x-3)(x+5) = 1/3\n\n(2x+2)/(x-3)(x+5) = 1/3\n\n⇒ 3(2x + 2) = (x-3)(x+5)\n\n⇒ 6x + 6 = x^2 + 2x – 15\n\n⇒ x^2 – 4x – 21 = 0\n\n⇒ x^2 – 7x + 3x – 21 = 0\n\n⇒ x(x – 7) + 3(x – 7) = 0\n\n⇒ (x – 7)(x + 3) = 0\n\n⇒ x = 7, -3\n\nWe know age cannot be negative, hence the answer is 7.",
                 "explanationImageUrl": ""
@@ -131,7 +131,7 @@ const quizzes = [
                     "60 km/hr"
                 ],
                 "answer": "40 km/hr",
-                "timeLimit": 300,
+                "timeLimit": 360,
                 "imageUrl": "",
                 "explanation": "Let x km/hr be the speed of train.\n\nTime required to cover 360 km = 360/x hr.\n\nAs per the question given,\n\n⇒ (x + 5)(360-1/x) = 360\n\n⇒ 360 – x + 1800-5/x = 360\n\n⇒ x^2 + 5x + 10x – 1800 = 0\n\n⇒ x(x + 45) -40(x + 45) = 0\n\n⇒ (x + 45)(x – 40) = 0\n\n⇒ x = 40, -45\n\nNegative value is not considered for speed hence the answer is 40km/hr.",
                 "explanationImageUrl": ""
@@ -146,7 +146,7 @@ const quizzes = [
                     "-4"
                 ],
                 "answer": "8",
-                "timeLimit": 300,
+                "timeLimit": 360,
                 "imageUrl": "",
                 "explanation": "If one root is reciprocal of others, then the product of roots will be:\n\nα x 1/α = (k-4)/4\n\nk-4 = 4\n\nk = 8",
                 "explanationImageUrl": ""
@@ -161,11 +161,79 @@ const quizzes = [
                     "x^3 – x^2 + 2x + 1 = (x + 1)^3"
                 ],
                 "answer": "(x + 2) (x – 1) = x^2 – 2x – 3",
-                "timeLimit": 300,
+                "timeLimit": 360,
                 "imageUrl": "",
                 "explanation": "We know that the degree of a quadratic equation is 2.\n\nBy verifying the options,\n\n(a) (x + 2)^2 = 2(x + 3) \n\nx^2 + 4x + 4 = 2x + 6\n\nx^2 + 2x – 2 = 0\n\nThis is a quadratic equation.\n\n(b) x^2 + 3x = (–1) (1 – 3x)^2\n\nx^2 + 3x = -1(1 + 9x2 – 6x)\n\nx^2 + 3x + 1 + 9x^2 – 6x = 0\n\n10x^2 – 3x + 1 = 0\n\nThis is a quadratic equation.\n\n(c) (x + 2) (x – 1) = x^2 – 2x – 3 \n\nx^2 + x – 2 = x^2 – 2x – 3\n\nx^2 + x – 2 – x^2 + 2x + 3 = 0\n\n3x + 1 = 0\n\nThis is not a quadratic equation.",
                 "explanationImageUrl": ""
             },
+        ]
+    },
+    {
+        "id": "Problems on Simultaneous Linear Equations",
+        "name": "Problems on Simultaneous Linear Equations",
+        "description": "",
+        "enabled": true,
+        "questions": [
+            {
+                "question": "The sum of two numbers is 50 and their difference is 16. Find the numbers. WRITE IN FORMAT A/B WHERE VALUE OF A IS BIGGER THAN B",
+                "type": "input",
+                "options": [],
+                "answer": "33/17",
+                "timeLimit": 480,
+                "imageUrl": "",
+                "explanation": "Let’s assume the two numbers to be x and y\n\nThen according to the given conditions, we have\n\nx + y = 50 … (i) and\n\nx – y = 16 … (ii)\n\nNow, adding (i) and (ii) we get\n\n2x = 66\n\nx = 33\n\nOn substituting the value of x in (i), we get\n\n33 + y = 50\n\ny = 50 – 33\n\ny = 17\n\nTherefore, the two numbers are 33 and 17.",
+                "explanationImageUrl": ""
+            },
+            {
+                "question": "The sum of two numbers is 2. If their difference is 20, find the numbers. WRITE IN FORMAT A/B WHERE VALUE OF A IS BIGGER THAN B",
+                "type": "input",
+                "options": [],
+                "answer": "11/-9",
+                "timeLimit": 480,
+                "imageUrl": "",
+                "explanation": "Let’s assume the two numbers to be x and y\n\nThen according to the given conditions, we have\n\nx + y = 2 … (i) and\n\nx – y = 20 … (ii)\n\nNow, by adding (i) and (ii), we get\n\n2x = 22\n\nx = 11\n\nOn substituting the value of x in (i), we get\n\n11 + y = 2\n\ny = 2 – 11\n\ny = -9\n\nTherefore, the two numbers are 11 and -9.",
+                "explanationImageUrl": ""
+            },
+            {
+                "question": "The sum of two numbers is 43. If the larger is doubled and the smaller is tripled, the difference is 36. Find the two numbers. WRITE IN FORMAT A/B WHERE VALUE OF A IS BIGGER THAN B",
+                "type": "input",
+                "options": [],
+                "answer": "33/10",
+                "timeLimit": 480,
+                "imageUrl": "",
+                "explanation": "Let’s assume the two numbers to be x and y such that x > y\n\nThen according to the given conditions, we have\n\nx + y = 43 … (i) and\n\n2x – 3y = 36 … (ii)\n\nNow, multiplying (i) by 3 and adding with (ii) we get\n\n3x + 3y = 129\n\n2x – 3y = 36\n\n—————–\n\n5x = 165\n\nx = 165/5 = 33\n\nOn substituting the value of x in (i), we get\n\n33 + y = 43\n\ny = 43 – 33\n\ny = 10\n\nTherefore, the two numbers are 33 and 10.",
+                "explanationImageUrl": ""
+            },
+            {
+                "question": "The cost of 5 kg of sugar and 7 kg of rice is Rs. 153, and the cost of 7 kg of sugar and 5 kg of rice is Rs. 147. Find the cost of 6 kg of sugar and 10 kg of rice. WRITE ONLY THE NUMBER AND AVOIDE RS.",
+                "type": "input",
+                "options": [],
+                "answer": "206",
+                "timeLimit": 480,
+                "imageUrl": "",
+                "explanation": "Let’s assume the cost of 1 kg of sugar = Rs x\n\nAnd, let the cost of 1 kg of rice = Rs y\n\nThen according to the given conditions, we have\n\n5x + 7y = 153 … (i) and\n\n7x + 5y = 147 … (ii)\n\nMultiplying (i) by 7 and (ii) by 5, we have\n\n35x + 49y = 1071 … (iii)\n\n35x + 25y = 735 … (iv)\n\n(-)—(-)——(-)————- Subtracting (iv) from (iii), we get\n\n24y = 336\n\ny = 336/24\n\ny = 14\n\nOn substituting the value of y in (i), we get\n\n5x + 7(14) = 153\n\n5x + 98 = 153\n\n5x = 153 – 98\n\n5x = 55\n\nx = 55/5 = 11\n\nSo, the cost of 1 kg of sugar is Rs 11 and the cost of 1 kg of rice is Rs 14.\n\nNow,\n\nCost of 6 kg of sugar = Rs 11 x 6 = Rs 66\n\nCost of 10 kg of rice = Rs 14 x 10 = Rs 140\n\nThus, the cost of 6 kg of sugar and 10 kg of rice = Rs 66 + Rs 140 = Rs 206.",
+                "explanationImageUrl": ""
+            },
+            {
+                "question": "The class IX students of a certain public school wanted to give a farewell party to the outgoing students of class X. They decided to purchase two kinds of sweets, one costing Rs. 70 per kg and the other costing Rs. 84 per kg. They estimated that 36 kg of sweets were needed. If the total money spent on sweets was Rs. 2800, find how much sweets of each kind they purchased. WRITE ONLY THE NUMBER AND AVOIDE RS.",
+                "type": "input",
+                "options": [],
+                "answer": "84",
+                "timeLimit": 480,
+                "imageUrl": "",
+                "explanation": "Let the quantity of sweet costing Rs 70 be x\n\nAnd, the quantity of sweet costing Rs 84 be y\n\nGiven, total quantity of sweets purchased is 34 kg\n\nx + y = 34 … (i)\n\nAlso given, the total money spent is Rs 2800\n\n70x + 84y = 2800 … (ii)\n\nMultiplying (i) by 70 and subtracting with (ii), we get\n\n70x + 70y = 2520\n\n70x + 84y = 2800\n\n(-)—(-)—–(-)——\n\n-14y = -280\n\ny = -280/-14\n\ny = 20\n\nOn substituting the value of y in equation (i), we get\n\nx + 20 = 36\n\nx = 36 – 20\n\nx = 16\n\nTherefore, the quantities of sweets purchased are 16 kg which costs Rs 70 per kg and 20 kg which costs Rs 84 per kg.",
+                "explanationImageUrl": ""
+            },
+            {
+                "question": "If from twice the greater of two numbers 16 is subtracted, the result is half the other number. If from half the greater number 1 is subtracted, the result is still half the other number. What are the numbers. WRITE IN FORMAT A/B WHERE VALUE OF A IS BIGGER THAN B",
+                "type": "input",
+                "options": [],
+                "answer": "10/8",
+                "timeLimit": 480,
+                "imageUrl": "",
+                "explanation": "Let’s consider the greater number to be x and the smaller number to be y.\n\nThen, according to the given conditions, we have\n\n2x – 16 = y/2 ⇒ 4x – 32 = y ⇒ 4x – y = 32 … (i)\n\nAnd,\n\nx/2 – 1 = y/2 ⇒ x – 2 = y ⇒ x – y = 2 … (ii)\n\nNow, subtracting (ii) from (i) we get\n\n4x – y = 32\n\nx – y = 2\n\n(-)–(+)—(-)—\n\n3x = 30\n\nx = 10\n\nOn substituting the value of x in (i), we get\n\n2(10) – 16 = y/2\n\n20 – 16 = y/2\n\n4 = y/2\n\ny = 8\n\nTherefore, the two numbers are 10 and 8.",
+                "explanationImageUrl": ""
+            }
         ]
     },
     {
