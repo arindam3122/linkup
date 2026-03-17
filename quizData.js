@@ -4,7 +4,7 @@ const quizzes = [
         "id": "MCQs for Quadratic Equations",
         "name": "Class 10 Maths MCQs for Quadratic Equations",
         "description": "",
-        "enabled": true,
+        "enabled": false,
         "questions": [
             {
                 "question": "Equation of (x+1)^2-x^2=0 has number of real roots equal to:",
@@ -169,10 +169,168 @@ const quizzes = [
         ]
     },
     {
+        "id": "Human Reproduction for Class 12",
+        "name": "Human Reproduction for Class 12",
+        "description": "",
+        "enabled": false,
+        "questions": [
+            {
+                "question": "_______ is a lytic enzyme released by the sperm.",
+                "type": "mcq",
+                "options": [
+                    "Hyaluronidase",
+                    "Trypsin",
+                    "Helicase",
+                    "None of the above"
+                ],
+                "answer": "Hyaluronidase",
+                "timeLimit": 10,
+                "imageUrl": "",
+                "explanation": "",
+                "explanationImageUrl": ""
+            },
+            {
+                "question": "How many autosomes does a human primary spermatocyte have?",
+                "type": "mcq",
+                "options": [
+                    "34",
+                    "44",
+                    "54",
+                    "33"
+                ],
+                "answer": "44",
+                "timeLimit": 120,
+                "imageUrl": "",
+                "explanation": "",
+                "explanationImageUrl": ""
+            },
+            {
+                "question": "Where does the ovum receive the sperm?",
+                "type": "mcq",
+                "options": [
+                    "Animal pole",
+                    "Vegetal pole",
+                    "Zona pellucida",
+                    "None of the above"
+                ],
+                "answer": "Animal pole",
+                "timeLimit": 120,
+                "imageUrl": "",
+                "explanation": "",
+                "explanationImageUrl": ""
+            },
+            {
+                "question": "___________is an organelle that helps the sperm to penetrate the ovum",
+                "type": "mcq",
+                "options": [
+                    "Acrosome",
+                    "Zona pellucida",
+                    "Megalis",
+                    "None of the above"
+                ],
+                "answer": "Acrosome",
+                "timeLimit": 120,
+                "imageUrl": "",
+                "explanation": "",
+                "explanationImageUrl": ""
+            },
+            {
+                "question": "Umbilical cord contains _________",
+                "type": "mcq",
+                "options": [
+                    "Pluripotent stem cells",
+                    "Cord blood stem cells",
+                    "Blood stem cells",
+                    "None of the above"
+                ],
+                "answer": "Cord blood stem cells",
+                "timeLimit": 120,
+                "imageUrl": "",
+                "explanation": "",
+                "explanationImageUrl": ""
+            },
+            {
+                "question": "How does human sperm locomote?",
+                "type": "mcq",
+                "options": [
+                    "Flagella",
+                    "Cilia",
+                    "Neutrophils",
+                    "None of the above"
+                ],
+                "answer": "Flagella",
+                "timeLimit": 120,
+                "imageUrl": "",
+                "explanation": "",
+                "explanationImageUrl": ""
+            },
+            {
+                "question": "Cryptorchidism is a condition where _________.",
+                "type": "mcq",
+                "options": [
+                    "One of both testes are not developed",
+                    "One or both testes fail to descend into the scrotum",
+                    "One or both testes are not formed",
+                    "None of the above"
+                ],
+                "answer": "One or both testes fail to descend into the scrotum",
+                "timeLimit": 120,
+                "imageUrl": "",
+                "explanation": "",
+                "explanationImageUrl": ""
+            },
+            {
+                "question": "Bidder’s canal receives __________.",
+                "type": "mcq",
+                "options": [
+                    "Eggs",
+                    "Sperms",
+                    "Ammonia",
+                    "Oxygenated blood"
+                ],
+                "answer": "Sperms",
+                "timeLimit": 120,
+                "imageUrl": "",
+                "explanation": "",
+                "explanationImageUrl": ""
+            },
+            {
+                "question": "The hormone that is released from the testes is ______",
+                "type": "mcq",
+                "options": [
+                    "Progesterone",
+                    "Vasopressin",
+                    "Testosterone",
+                    "None of the above"
+                ],
+                "answer": "Testosterone",
+                "timeLimit": 120,
+                "imageUrl": "",
+                "explanation": "",
+                "explanationImageUrl": ""
+            },
+            {
+                "question": "Wolffian duct is also known as ____________",
+                "type": "mcq",
+                "options": [
+                    "Mesonephric duct",
+                    "Ejaculatory duct",
+                    "Major sublingual duct",
+                    "Cystic duct"
+                ],
+                "answer": "Mesonephric duct",
+                "timeLimit": 120,
+                "imageUrl": "",
+                "explanation": "",
+                "explanationImageUrl": ""
+            }
+        ]
+    },
+    {
         "id": "Problems on Simultaneous Linear Equations",
         "name": "Problems on Simultaneous Linear Equations",
         "description": "",
-        "enabled": true,
+        "enabled": false,
         "questions": [
             {
                 "question": "The sum of two numbers is 50 and their difference is 16. Find the numbers. WRITE IN FORMAT A/B WHERE VALUE OF A IS BIGGER THAN B",
