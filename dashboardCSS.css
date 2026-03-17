@@ -52,7 +52,7 @@ body {
     user-select: none;
 }
 .heading5 {
-    color: #120310; /* Darker, more professional heading color */
+    color: #0892bc; /* Darker, more professional heading color */
     font-weight: 700; /* Bolder */
     font-size: 2.2em; /* Slightly larger */
     margin-bottom: 15px;
@@ -1673,9 +1673,10 @@ header {
 }
 
 .question-text-result {
-  font-size: 1.2em;
-  font-weight: 600;
-  color: #2c3e50;
+  font-size: 1.4em;
+  font-weight: 340;
+  color: #1b1c1d;
+  font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   margin-bottom: 12px;
 }
 
@@ -1702,8 +1703,8 @@ header {
 .correct-answer {
   background: transparent;  /* remove background */
   color: #16a34a;          /* green text */
-  font-weight: 800;
-  font-size: 17px;
+  font-weight: 700;
+  font-size: 19px;
 }
 
 .time-limit {
@@ -2348,7 +2349,7 @@ mark.highlight {
     padding:12px 14px;
     margin-top:10px;
     border-radius:6px;
-    font-size:16px;
+    font-size:19px;
     line-height:1.6;
 }
 .explanation-box b{
