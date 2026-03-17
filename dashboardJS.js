@@ -139,9 +139,9 @@ function showCreateQuizSection() {
 }
 document.addEventListener('DOMContentLoaded', () => {
     const loggedInUser = localStorage.getItem('loggedInUser');
-    if (!loggedInUser) {
-        window.location.href = "index.html";
-    } else {
+         if (!loggedInUser) {
+          window.location.replace("index.html");
+        } else {
         usernameDisplay.textContent = loggedInUser;
         welcomeHeading.textContent = `Welcome, ${loggedInUser}!`;
 
@@ -971,9 +971,9 @@ window.addEventListener('focus', () => {
 // --- Authentication and Initial Load ---
 document.addEventListener('DOMContentLoaded', (event) => {
     const loggedInUser = localStorage.getItem('loggedInUser');
-    if (!loggedInUser) {
-        window.location.href = "index.html"; // Redirect to login if not logged in
-    } else {
+      if (!loggedInUser) {
+      window.location.replace("index.html");
+      } else {
         usernameDisplay.textContent = loggedInUser;
         welcomeHeading.textContent = `Welcome, ${loggedInUser}!`;
 
