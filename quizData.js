@@ -18,7 +18,7 @@ const quizzes = [
                 "answer": "1",
                 "timeLimit": 360,
                 "imageUrl": "",
-                "explanation": "(x+1)^2-x^2=0\n\nx^2+2x+1-x2 = 0\n\n2x+1=0\n\nx=-½\nHence, there is one real root.",
+                "explanation": "(x+1)^2-x^2=0\n\nx^2+2x+1-x^2 = 0\n\n2x+1=0\n\nx=-½\nHence, there is one real root.",
                 "explanationImageUrl": ""
             },
             {
