@@ -261,20 +261,31 @@ function renderAllQuizzes() {
     filteredQuizzes.forEach((quiz) => {
         const quizCard = document.createElement('div');
         quizCard.classList.add('quiz-card');
+const totalQuestions = quiz.questions.length;
 
-        quizCard.innerHTML = `
-            <h3>${quiz.name}</h3>
-            <p>${quiz.description || ''}</p>
-            <p>
-              <b>Status:</b> 
-              <span class="status-badge ${quiz.enabled ? 'active' : 'inactive'}">
-                ${quiz.enabled ? '🟢 Active' : '🔴 Inactive'}
-              </span>
-            </p>
-            <button class="view-details-btn">
-                <i class="fas fa-eye"></i> View Details
-            </button>
-        `;
+// ✅ IMPORTANT: sum all question times
+const totalTime = quiz.questions.reduce((sum, q) => sum + (q.timeLimit || 0), 0);
+
+const formattedTime = formatTime(totalTime);
+quizCard.innerHTML = `
+    <h3>${quiz.name}</h3>
+    <p>${quiz.description || ''}</p>
+
+ <p style="font-size:18px; font-weight:500; color:#3333 margin:10px 0;">
+    📋 ${totalQuestions} Questions | ⏱ ${formattedTime}
+</p>
+
+    <p>
+      <b>Status:</b> 
+      <span class="status-badge ${quiz.enabled ? 'active' : 'inactive'}">
+        ${quiz.enabled ? '🟢 Active' : '🔴 Inactive'}
+      </span>
+    </p>
+
+    <button class="view-details-btn">
+        <i class="fas fa-eye"></i> View Details
+    </button>
+`;
 
         quizCard.querySelector('.view-details-btn').onclick = () => {
             showQuizDetailsForAdmin(quiz);
