@@ -315,22 +315,25 @@
 <div id="aiInsightsContainer" style="display:none;">
   <h2 class="heading2">🧠 AI Performance Insights</h2>
 
-  <div class="ai-summary-box">
-    <p id="aiSummaryText"></p>
-  </div>
+  <!-- NEW GRID -->
+  <div class="ai-grid">
 
-  <!-- 🔥 Suggested Questions -->
-  <div class="ai-suggestions">
-    <button onclick="quickAsk('How can I improve?')">Improve</button>
-    <button onclick="quickAsk('What are my weak areas?')">Weak Areas</button>
-    <button onclick="quickAsk('What is my average score?')">Score</button>
-    <button onclick="quickAsk('Give me tips')">Tips</button>
-  </div>
+    <div id="aiTodayPlan" class="ai-card"></div>
+    <div id="aiTargetScore" class="ai-card"></div>
+    <div id="aiConsistency" class="ai-card"></div>
+    <div id="aiMistakePattern" class="ai-card"></div>
+    <div id="aiWeakTopics" class="ai-card"></div>
+    <div id="aiTips" class="ai-card"></div>
 
-  <!-- Chat Box -->
+  </div>
+  <div id="aiSummaryBox" class="ai-summary-box"></div>
+  <div class="ai-chart-container">
+  <canvas id="aiScoreChart"></canvas>
+</div>
+
+  <!-- Keep your existing chatbot below -->
   <div class="ai-chat-box">
     <div id="aiChatMessages" class="chat-messages"></div>
-
     <div class="chat-input-row">
       <input type="text" id="aiUserInput" placeholder="Ask your AI coach..." />
       <button id="aiSendBtn">🚀 Ask</button>

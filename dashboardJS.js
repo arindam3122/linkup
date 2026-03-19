@@ -1165,56 +1165,143 @@ function showPerformanceTrendsSection() {
 function generateAIInsights() {
     const user = localStorage.getItem('loggedInUser');
     const data = JSON.parse(localStorage.getItem(`previousQuizzes_${user}`)) || [];
-
-    const summaryBox = document.getElementById('aiSummaryText');
-
+        // ❗ IF NO DATA
     if (data.length === 0) {
-        summaryBox.innerHTML = "🤖 AI says: You haven't taken any quizzes yet!";
+
+        document.getElementById("aiTodayPlan").innerHTML = "📭 No data available";
+        document.getElementById("aiTargetScore").innerHTML = "📭 No data available";
+        document.getElementById("aiConsistency").innerHTML = "📭 No data available";
+        document.getElementById("aiMistakePattern").innerHTML = "📭 No data available";
+        document.getElementById("aiWeakTopics").innerHTML = "📭 No data available";
+        document.getElementById("aiTips").innerHTML = "📭 No data available";
+
+        // 🧠 Summary
+        document.getElementById("aiSummaryBox").innerHTML =
+            "📭 No quiz data yet. Attempt quizzes to see AI insights.";
+
+        // 📊 Clear chart
+        clearAIChart();
+
+        return;
+    }
+    if (data.length === 0) {
+        document.getElementById("aiTodayPlan").innerHTML = "No quiz data yet.";
         return;
     }
 
     let totalScore = 0;
     let totalQuestions = 0;
-    let weakQuizzes = [];
 
     data.forEach(q => {
         totalScore += q.score;
         totalQuestions += q.totalQuestions;
+    });
 
+    const avg = ((totalScore / totalQuestions) * 100);
+
+    // 🟢 1. TODAY PLAN
+    let weak = data.filter(q => q.percentage < 50);
+
+    document.getElementById("aiTodayPlan").innerHTML = weak.length
+        ? `📅 <b>Today's Plan:</b><br>Revise <b>${weak[0].quizName}</b>`
+        : `🎯 <b>Today's Plan:</b><br>Try a new quiz`;
+
+    // 🟢 2. TARGET SCORE
+    const target = Math.min(100, avg + 10).toFixed(1);
+
+    document.getElementById("aiTargetScore").innerHTML =
+        `🎯 <b>Target:</b><br>${target}% next quiz`;
+
+    // 🟢 3. CONSISTENCY
+    let consistency = data.length < 3
+        ? "⚠️ Low"
+        : data.length < 7
+        ? "🙂 Medium"
+        : "🔥 Strong";
+
+    document.getElementById("aiConsistency").innerHTML =
+        `📆 Consistency:<br><b>${consistency}</b>`;
+
+    // 🟢 4. MISTAKE PATTERN
+    let careless = 0, slow = 0;
+
+    data.forEach(q => {
         if (q.percentage < 50) {
-            weakQuizzes.push(q.quizName);
+            if (q.avgTime < 5) careless++;
+            if (q.avgTime > 30) slow++;
         }
     });
 
-    const avg = ((totalScore / totalQuestions) * 100).toFixed(2);
+    let pattern = "Balanced";
+    if (careless > slow) pattern = "⚠️ Careless mistakes";
+    if (slow > careless) pattern = "⏱ Overthinking";
 
-    let insight = `
-    🤖 <b>AI Summary:</b><br><br>
+    document.getElementById("aiMistakePattern").innerHTML =
+        `🧠 Pattern:<br><b>${pattern}</b>`;
 
-    📊 Average Score: <b>${avg}%</b><br>
-    📝 Total Quizzes: <b>${data.length}</b><br><br>
-    `;
+    // 🟢 5. WEAK TOPICS
+    let weakTopics = data
+        .filter(q => q.percentage < 60)
+        .map(q => `📉 ${q.quizName}`);
 
-    if (avg < 50) {
-        insight += "⚠️ You need improvement. Focus on basics.<br>";
-    } else if (avg < 75) {
-        insight += "👍 You're doing okay, but can improve.<br>";
-    } else {
-        insight += "🔥 Excellent performance! Keep it up!<br>";
-    }
+    document.getElementById("aiWeakTopics").innerHTML =
+        `<b>Weak Areas:</b><br>${weakTopics.join("<br>") || "None"}`;
+        // 🟢 6. TIPS (FINAL FIXED VERSION)
 
-    if (weakQuizzes.length > 0) {
-        insight += `<br>📉 Weak Areas:<br> - ${weakQuizzes.join("<br> - ")}`;
-    }
+let tips = [];
 
-    summaryBox.innerHTML = insight;
+// 📊 Basic conditions
+if (avg < 50) {
+    tips.push("Revise basic concepts and strengthen your foundation.");
+}
+
+if (weak.length > 0) {
+    tips.push("Focus on weak quizzes and practice them again.");
+}
+
+if (avg > 75) {
+    tips.push("Try harder quizzes to challenge yourself.");
+}
+
+// 🎯 Mixed performance (IMPORTANT FIX)
+if (avg >= 50 && avg <= 75 && weak.length > 0) {
+    tips.push("You have mixed performance. Improve weak areas while maintaining strong ones.");
+}
+
+// 🔥 Advanced smart tips
+if (weak.length >= 2) {
+    tips.push("Multiple weak areas detected. Prioritize revision.");
+}
+
+if (avg > 80 && weak.length === 0) {
+    tips.push("Excellent performance! Maintain your consistency.");
+}
+
+// 🚨 SAFETY (prevents empty output)
+if (tips.length === 0) {
+    tips.push("Keep practicing consistently to improve your performance.");
+}
+    document.getElementById("aiTips").innerHTML =
+        `💡 <b>Tips:</b><br>• ${tips.join("<br>• ")}`;
+        renderAICharts(data);
+        document.getElementById("aiSummaryBox").innerHTML = generateAISummary(data);
 }
 const aiSendBtn = document.getElementById("aiSendBtn");
 
 if (aiSendBtn) {
     aiSendBtn.addEventListener("click", handleAIChat);
 }
+function clearAIChart() {
+    if (window.aiScoreChartInstance) {
+        window.aiScoreChartInstance.destroy();
+    }
 
+    const ctx = document.getElementById('aiScoreChart');
+
+    if (ctx) {
+        ctx.getContext("2d").clearRect(0, 0, ctx.width, ctx.height);
+    }
+}
 function handleAIChat() {
     const input = document.getElementById("aiUserInput");
     const msg = input.value.trim();
@@ -1243,7 +1330,7 @@ function generateAIReply(message) {
     const data = JSON.parse(localStorage.getItem(`previousQuizzes_${user}`)) || [];
 
     if (data.length === 0) {
-        return "🤖 You haven't taken any quizzes yet. Start one to get insights!";
+         return "📭 No quiz data yet. Try attempting a quiz first!";
     }
 
     let totalScore = 0, totalQ = 0;
@@ -1324,9 +1411,96 @@ function generateAIReply(message) {
     <br><br>Try asking: "How can I improve?"
     `;
 }
+function renderAICharts(data) {
+    // ❌ If no data, stop
+    if (!data || data.length === 0) return;
+
+    // 📊 Prepare data
+    const labels = data.map(q => q.quizName);
+    const percentages = data.map(q => parseFloat(q.percentage));
+
+    // ❌ Destroy old chart (important to avoid overlap)
+    if (window.aiScoreChartInstance) {
+        window.aiScoreChartInstance.destroy();
+    }
+
+    // 🎯 Get canvas
+    const ctx = document.getElementById('aiScoreChart');
+
+    if (!ctx) return; // safety check
+
+    // 📈 Create Line Chart ONLY
+    window.aiScoreChartInstance = new Chart(ctx, {
+        type: 'line',
+        data: {
+            labels: labels,
+            datasets: [{
+                label: 'Performance (%)',
+                data: percentages,
+                borderColor: '#4f46e5',
+                backgroundColor: 'rgba(79,70,229,0.2)',
+                tension: 0.4,
+                fill: true,
+                pointRadius: 5,
+                pointBackgroundColor: '#4f46e5'
+            }]
+        },
+        options: {
+            responsive: true,
+            plugins: {
+                legend: {
+                    display: true
+                }
+            },
+            scales: {
+                y: {
+                    beginAtZero: true,
+                    max: 100
+                }
+            }
+        }
+    });
+}
 function quickAsk(question) {
     document.getElementById("aiUserInput").value = question;
     handleAIChat();
+}
+function generateAISummary(data) {
+    if (!data || data.length === 0) {
+        return "No quiz data available yet.";
+    }
+
+    let totalScore = 0;
+    let totalQuestions = 0;
+    let weakCount = 0;
+    let strongCount = 0;
+
+    data.forEach(q => {
+        totalScore += q.score;
+        totalQuestions += q.totalQuestions;
+
+        if (q.percentage < 50) weakCount++;
+        if (q.percentage > 75) strongCount++;
+    });
+
+    const avg = ((totalScore / totalQuestions) * 100).toFixed(1);
+
+    let performanceLevel = "";
+    if (avg < 50) performanceLevel = "needs improvement";
+    else if (avg < 75) performanceLevel = "moderate";
+    else performanceLevel = "strong";
+
+    return `
+    🧠 <b>Overall Summary:</b><br><br>
+
+    • Your average score is <b>${avg}%</b>, which indicates a <b>${performanceLevel}</b> performance.<br><br>
+
+    • You have <b>${weakCount}</b> weak quizzes that need attention.<br>
+    • You performed strongly in <b>${strongCount}</b> quizzes.<br><br>
+
+    📌 <b>Recommendation:</b><br>
+    Focus on weak areas, revise concepts, and maintain consistency to improve your overall performance.
+    `;
 }
 function addMessage(sender, text) {
     const box = document.getElementById("aiChatMessages");
