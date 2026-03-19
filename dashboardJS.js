@@ -53,7 +53,8 @@ const skippedQuestionsCount = document.getElementById('skippedQuestionsCount');
 const percentageScore = document.getElementById('percentageScore');
 const viewResultsButton = document.getElementById('viewResultsButton');
 const returnToDashboardButton = document.getElementById('returnToDashboardButton');
-
+const aiInsightsLink = document.getElementById('aiInsightsLink');
+const aiInsightsContainer = document.getElementById('aiInsightsContainer');
 const dashboardLink = document.getElementById('dashboardLink');
 const startQuizLink = document.getElementById('startQuizLink');
 const previousQuizzesLink = document.getElementById('previousQuizzesLink');
@@ -1017,7 +1018,12 @@ dashboardLink.addEventListener('click', (e) => {
     goToDashboard();
     closeSidebar(); // Close sidebar on navigation
 });
-
+aiInsightsLink.addEventListener('click', (e) => {
+    e.preventDefault();
+    setActiveLink(aiInsightsLink);
+    showAIInsightsSection();
+    closeSidebar();
+});
 startQuizLink.addEventListener('click', (e) => {
     e.preventDefault();
     setActiveLink(startQuizLink);
@@ -1133,15 +1139,18 @@ function hideAllSections() {
     quizSelectionContainer.style.display = 'none';
     performanceTrendsContainer.style.display = 'none';
     archivedQuizzesContainer.style.display = 'none';
+    aiInsightsContainer.style.display = 'none';
     document.getElementById('allQuizzesContainer').style.display = 'none';
     if (document.getElementById('usersContainer')) {
         document.getElementById('usersContainer').style.display = 'none';
     }
     quizCompletedMessage.classList.remove('show');
 }
-
-
-
+function showAIInsightsSection() {
+    hideAllSections();
+    aiInsightsContainer.style.display = 'block';
+    generateAIInsights();
+}
 performanceTrendsLink.addEventListener('click', (e) => {
     e.preventDefault();
     setActiveLink(performanceTrendsLink);
@@ -1153,7 +1162,191 @@ function showPerformanceTrendsSection() {
     performanceTrendsContainer.style.display = 'block';
     renderPerformanceCharts();
 }
+function generateAIInsights() {
+    const user = localStorage.getItem('loggedInUser');
+    const data = JSON.parse(localStorage.getItem(`previousQuizzes_${user}`)) || [];
 
+    const summaryBox = document.getElementById('aiSummaryText');
+
+    if (data.length === 0) {
+        summaryBox.innerHTML = "🤖 AI says: You haven't taken any quizzes yet!";
+        return;
+    }
+
+    let totalScore = 0;
+    let totalQuestions = 0;
+    let weakQuizzes = [];
+
+    data.forEach(q => {
+        totalScore += q.score;
+        totalQuestions += q.totalQuestions;
+
+        if (q.percentage < 50) {
+            weakQuizzes.push(q.quizName);
+        }
+    });
+
+    const avg = ((totalScore / totalQuestions) * 100).toFixed(2);
+
+    let insight = `
+    🤖 <b>AI Summary:</b><br><br>
+
+    📊 Average Score: <b>${avg}%</b><br>
+    📝 Total Quizzes: <b>${data.length}</b><br><br>
+    `;
+
+    if (avg < 50) {
+        insight += "⚠️ You need improvement. Focus on basics.<br>";
+    } else if (avg < 75) {
+        insight += "👍 You're doing okay, but can improve.<br>";
+    } else {
+        insight += "🔥 Excellent performance! Keep it up!<br>";
+    }
+
+    if (weakQuizzes.length > 0) {
+        insight += `<br>📉 Weak Areas:<br> - ${weakQuizzes.join("<br> - ")}`;
+    }
+
+    summaryBox.innerHTML = insight;
+}
+const aiSendBtn = document.getElementById("aiSendBtn");
+
+if (aiSendBtn) {
+    aiSendBtn.addEventListener("click", handleAIChat);
+}
+
+function handleAIChat() {
+    const input = document.getElementById("aiUserInput");
+    const msg = input.value.trim();
+    if (!msg) return;
+
+    addMessage("user", msg);
+
+    const reply = generateAIReply(msg);
+    setTimeout(() => addMessage("ai", reply), 500);
+
+    input.value = "";
+}
+
+function addMessage(sender, text) {
+    const box = document.getElementById("aiChatMessages");
+    const div = document.createElement("div");
+    div.className = sender === "user" ? "user-msg" : "ai-msg";
+    div.innerHTML = text;
+    box.appendChild(div);
+    box.scrollTop = box.scrollHeight;
+}
+function generateAIReply(message) {
+    message = message.toLowerCase();
+
+    const user = localStorage.getItem('loggedInUser');
+    const data = JSON.parse(localStorage.getItem(`previousQuizzes_${user}`)) || [];
+
+    if (data.length === 0) {
+        return "🤖 You haven't taken any quizzes yet. Start one to get insights!";
+    }
+
+    let totalScore = 0, totalQ = 0;
+    data.forEach(q => {
+        totalScore += q.score;
+        totalQ += q.totalQuestions;
+    });
+
+    const avg = ((totalScore / totalQ) * 100).toFixed(2);
+
+    // 🔥 SMART RESPONSES
+
+    if (message.includes("improve") || message.includes("how")) {
+        return "📈 To improve: Focus on weak quizzes, review explanations, and retry incorrect questions.";
+    }
+
+    if (message.includes("weak")) {
+        const weak = data.filter(q => q.percentage < 50).map(q => q.quizName);
+        return weak.length 
+            ? `⚠️ Your weak areas:<br> - ${weak.join("<br> - ")}`
+            : "🎉 No major weak areas detected!";
+    }
+
+    if (message.includes("strong")) {
+        const strong = data.filter(q => q.percentage >= 75).map(q => q.quizName);
+        return strong.length 
+            ? `💪 Your strong areas:<br> - ${strong.join("<br> - ")}`
+            : "🤖 Keep practicing to build strong areas!";
+    }
+
+    if (message.includes("score") || message.includes("average")) {
+        return `📊 Your average score is <b>${avg}%</b>`;
+    }
+
+    if (message.includes("mistake") || message.includes("wrong")) {
+        return "❌ You often make mistakes in low-scoring quizzes. Review explanations carefully and retry them.";
+    }
+
+    if (message.includes("time")) {
+        return "⏱ You may be spending too much time. Try answering faster and avoid overthinking.";
+    }
+
+    if (message.includes("tips") || message.includes("advice")) {
+        return `
+        🎯 AI Tips:
+        <br>• Practice daily
+        <br>• Focus on weak areas
+        <br>• Review explanations
+        <br>• Retry wrong questions
+        `;
+    }
+
+    if (message.includes("progress")) {
+        return `📈 You have completed ${data.length} quizzes with an average score of ${avg}%. Keep improving!`;
+    }
+
+    if (message.includes("best") || message.includes("top")) {
+        const best = data.reduce((max, q) => q.percentage > max.percentage ? q : max);
+        return `🏆 Your best quiz: <b>${best.quizName}</b> (${best.percentage}%)`;
+    }
+
+    if (message.includes("worst")) {
+        const worst = data.reduce((min, q) => q.percentage < min.percentage ? q : min);
+        return `📉 Your weakest quiz: <b>${worst.quizName}</b> (${worst.percentage}%)`;
+    }
+
+    if (message.includes("motivate") || message.includes("motivation")) {
+        return "🔥 Don't give up! Every quiz makes you stronger. Keep pushing!";
+    }
+
+    // Default reply
+    return `
+    🤖 I can help you with:
+    <br>• Your average score
+    <br>• Weak & strong areas
+    <br>• Improvement tips
+    <br>• Best & worst quiz
+    <br><br>Try asking: "How can I improve?"
+    `;
+}
+function quickAsk(question) {
+    document.getElementById("aiUserInput").value = question;
+    handleAIChat();
+}
+function addMessage(sender, text) {
+    const box = document.getElementById("aiChatMessages");
+    const div = document.createElement("div");
+    div.className = sender === "user" ? "user-msg" : "ai-msg";
+
+    if (sender === "ai") {
+        let i = 0;
+        const interval = setInterval(() => {
+            div.innerHTML = text.substring(0, i);
+            i++;
+            if (i > text.length) clearInterval(interval);
+        }, 10);
+    } else {
+        div.innerHTML = text;
+    }
+
+    box.appendChild(div);
+    box.scrollTop = box.scrollHeight;
+}
 function goToDashboard() {
     hideAllSections();
     quizInfoBox.style.display = 'block';

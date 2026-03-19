@@ -28,6 +28,7 @@
     <li><a href="#" id="previousQuizzesLink"><i class="fas fa-history"></i> Previous Quizzes</a></li>
     <li><a href="#" id="archivedQuizzesLink"><i class="fas fa-archive"></i>Archived Quizzes</a></li>
     <li><a href="#" id="performanceTrendsLink"><i class="fas fa-chart-line"></i> Performance Trends</a></li>
+    <li><a href="#" id="aiInsightsLink"><i class="fas fa-robot"></i> AI Insights</a></li>
     <li><a href="#" id="logoutLink"><i class="fas fa-sign-out-alt"></i> Logout</a></li>
   </ul>
 </nav>
@@ -220,7 +221,7 @@
         </table>
         <div id="deleteSuccessMessage" class="info-message" style="display:none; background:#d4edda; color:#155724; margin:10px auto; text-align:center; max-width:500px; border-radius:8px; padding:10px; font-weight:bold;">
     ✅ Response deleted successfully!
-</div>
+   </div>
 
     </div>
     <div class="performance-trends-container" id="performanceTrendsContainer">
@@ -231,6 +232,7 @@
   <canvas id="scoreTrendChart"></canvas>
   <canvas id="scoreBarChart" style="margin-top:30px;"></canvas>
 </div>
+
 <div id="archivedQuizzesContainer" style="display:none;">
   <div class="archive-header">
     <i class="fas fa-archive"></i>
@@ -309,10 +311,33 @@
       </div>
     </form>
   </div>
-</div>
+ </div>
+<div id="aiInsightsContainer" style="display:none;">
+  <h2 class="heading2">🧠 AI Performance Insights</h2>
 
-</div>
+  <div class="ai-summary-box">
+    <p id="aiSummaryText"></p>
+  </div>
 
+  <!-- 🔥 Suggested Questions -->
+  <div class="ai-suggestions">
+    <button onclick="quickAsk('How can I improve?')">Improve</button>
+    <button onclick="quickAsk('What are my weak areas?')">Weak Areas</button>
+    <button onclick="quickAsk('What is my average score?')">Score</button>
+    <button onclick="quickAsk('Give me tips')">Tips</button>
+  </div>
+
+  <!-- Chat Box -->
+  <div class="ai-chat-box">
+    <div id="aiChatMessages" class="chat-messages"></div>
+
+    <div class="chat-input-row">
+      <input type="text" id="aiUserInput" placeholder="Ask your AI coach..." />
+      <button id="aiSendBtn">🚀 Ask</button>
+    </div>
+  </div>
+</div>
+</div>
 
   </div>
 
