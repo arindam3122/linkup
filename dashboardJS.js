@@ -162,7 +162,10 @@ document.addEventListener('DOMContentLoaded', () => {
                 adminGreeting.style.display = "block";
                 updateAdminStats(); // populate stats
             }
-
+            if (ADMIN_USERS.includes(loggedInUser)) {
+            // Hide AI Insights for admins
+            if (aiInsightsLink) aiInsightsLink.style.display = "none";
+            }
             // Replace Start Quiz with All Quizzes for admins
             startQuizLink.innerHTML = '<i class="fas fa-list"></i> All Quizzes';
             startQuizLink.onclick = (e) => {
@@ -1326,11 +1329,23 @@ function addMessage(sender, text) {
 function generateAIReply(message) {
     message = message.toLowerCase();
 
-    const user = localStorage.getItem('loggedInUser');
+    const user = localStorage.getItem('loggedInUser') || "User";
     const data = JSON.parse(localStorage.getItem(`previousQuizzes_${user}`)) || [];
 
+    // 🟢 Greeting responses
+    if (message === "hi" || message === "hello" || message === "hey") {
+        return `👋 Hi <b>${user}</b>!<br>How can I help you today?`;
+    }
+
+    if (message.includes("how are you")) {
+        return `😊 I'm doing great, ${user}! Ready to help you improve your performance 🚀`;
+    }
+
+    // ❗ If no data
     if (data.length === 0) {
-         return "📭 No quiz data yet. Try attempting a quiz first!";
+        return `👋 Hi <b>${user}</b>!<br>
+        I don't see any quiz data yet.<br>
+        👉 Try attempting a quiz and I’ll help you analyze it!`;
     }
 
     let totalScore = 0, totalQ = 0;
@@ -1341,76 +1356,76 @@ function generateAIReply(message) {
 
     const avg = ((totalScore / totalQ) * 100).toFixed(2);
 
-    // 🔥 SMART RESPONSES
+    // 🎯 Smart answers
 
     if (message.includes("improve") || message.includes("how")) {
-        return "📈 To improve: Focus on weak quizzes, review explanations, and retry incorrect questions.";
+        return `📈 <b>How to Improve:</b><br>
+        • Practice daily<br>
+        • Focus on weak quizzes<br>
+        • Review explanations carefully<br>
+        • Retry incorrect questions`;
     }
 
     if (message.includes("weak")) {
         const weak = data.filter(q => q.percentage < 50).map(q => q.quizName);
         return weak.length 
-            ? `⚠️ Your weak areas:<br> - ${weak.join("<br> - ")}`
-            : "🎉 No major weak areas detected!";
+            ? `⚠️ <b>Your weak areas:</b><br>• ${weak.join("<br>• ")}`
+            : "🎉 You don’t have major weak areas. Great job!";
     }
 
     if (message.includes("strong")) {
         const strong = data.filter(q => q.percentage >= 75).map(q => q.quizName);
         return strong.length 
-            ? `💪 Your strong areas:<br> - ${strong.join("<br> - ")}`
-            : "🤖 Keep practicing to build strong areas!";
+            ? `💪 <b>Your strong areas:</b><br>• ${strong.join("<br>• ")}`
+            : "Keep practicing to build strong areas 💯";
     }
 
     if (message.includes("score") || message.includes("average")) {
         return `📊 Your average score is <b>${avg}%</b>`;
     }
 
-    if (message.includes("mistake") || message.includes("wrong")) {
-        return "❌ You often make mistakes in low-scoring quizzes. Review explanations carefully and retry them.";
+    if (message.includes("motivate")) {
+        return `🔥 ${user}, you're improving every day! Keep going — success is close 🚀`;
     }
 
-    if (message.includes("time")) {
-        return "⏱ You may be spending too much time. Try answering faster and avoid overthinking.";
-    }
-
-    if (message.includes("tips") || message.includes("advice")) {
-        return `
-        🎯 AI Tips:
-        <br>• Practice daily
-        <br>• Focus on weak areas
-        <br>• Review explanations
-        <br>• Retry wrong questions
-        `;
+    if (message.includes("tips")) {
+        return `💡 <b>Pro Tips:</b><br>
+        • Stay consistent<br>
+        • Don’t rush questions<br>
+        • Learn from mistakes<br>
+        • Practice weak topics`;
     }
 
     if (message.includes("progress")) {
-        return `📈 You have completed ${data.length} quizzes with an average score of ${avg}%. Keep improving!`;
+        return `📈 You've completed <b>${data.length}</b> quizzes with an average of <b>${avg}%</b>. Keep improving!`;
     }
 
-    if (message.includes("best") || message.includes("top")) {
+    if (message.includes("best")) {
         const best = data.reduce((max, q) => q.percentage > max.percentage ? q : max);
-        return `🏆 Your best quiz: <b>${best.quizName}</b> (${best.percentage}%)`;
+        return `🏆 Best quiz: <b>${best.quizName}</b> (${best.percentage}%)`;
     }
 
     if (message.includes("worst")) {
         const worst = data.reduce((min, q) => q.percentage < min.percentage ? q : min);
-        return `📉 Your weakest quiz: <b>${worst.quizName}</b> (${worst.percentage}%)`;
+        return `📉 Weakest quiz: <b>${worst.quizName}</b> (${worst.percentage}%)`;
     }
 
-    if (message.includes("motivate") || message.includes("motivation")) {
-        return "🔥 Don't give up! Every quiz makes you stronger. Keep pushing!";
-    }
-
-    // Default reply
-    return `
-    🤖 I can help you with:
-    <br>• Your average score
-    <br>• Weak & strong areas
-    <br>• Improvement tips
-    <br>• Best & worst quiz
-    <br><br>Try asking: "How can I improve?"
-    `;
+    // 🤖 Default smart reply
+    return `🤖 <b>${user}</b>, I can help you with:<br>
+    • Improving performance<br>
+    • Finding weak areas<br>
+    • Tracking progress<br>
+    • Giving study tips<br><br>
+    Try asking:<br>
+    👉 "How can I improve?"`;
 }
+const aiInput = document.getElementById("aiUserInput");
+
+aiInput.addEventListener("keypress", function(e) {
+    if (e.key === "Enter") {
+        handleAIChat();
+    }
+});
 function renderAICharts(data) {
     // ❌ If no data, stop
     if (!data || data.length === 0) return;
