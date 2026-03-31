@@ -1,7 +1,7 @@
 const users = [
     { id: "Arindam", name: "Super Admin", password: "arindam", enabled: true },
     { id: "Arindam1", name: "Arindam Mitra", password: "Roni", enabled: true },
-    { id: "Marudhvathi", name: "Marudhvathi Banerjee", password: "Banerjee", enabled: true },
+    { id: "Marudhvathi", name: "Marudhvathi Banerjee", password: "Banerjee", enabled: false },
 ];
 
 function validateLogin() {
